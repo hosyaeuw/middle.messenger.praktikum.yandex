@@ -1,0 +1,22 @@
+{
+    "links": [
+        {
+            "title": "Chats",
+            "link": "./chats.hbs",
+            "icon": "../assets/icons/menu/chat.png"
+        },
+        {
+            "title": "Settings",
+            "link": "./settings.hbs",
+            "icon": "../assets/icons/menu/settings.png"
+        },
+        {
+            "title": "404",
+            "link": "./404.hbs"
+        },
+        {
+            "title": "500",
+            "link": "./500.hbs"
+        }
+    ]
+}
