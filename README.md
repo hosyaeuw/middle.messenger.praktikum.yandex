@@ -5,7 +5,7 @@ A messenger for Yandex Practicum using [handlerbars](https://handlebarsjs.com/)
 
 Figma - https://www.figma.com/file/7n0qOO1icKrAqh1sL0qjKy/Chat-Dashboard?node-id=102%3A426
 
-👉 [Pull request](https://github.com/handlerbars/middle.messenger.praktikum.yandex/pull/1)
+👉 [Pull request](https://github.com/hosyaeuw/middle.messenger.praktikum.yandex/pull/1)
 ---
 Setup
 -----
