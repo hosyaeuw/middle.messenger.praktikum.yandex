@@ -1,0 +1,46 @@
+$black: #0D1C2E;
+$blue: #2A8BF2;
+$red: #FF3366;
+$grey: #707C97;
+$lightgrey: #E6ECFE;
+$almostwhite: #FAFBFF;
+$white: #FFFFFF;
+
+$white-to-blue-gradient: linear-gradient(90.54deg, lighten($blue, 10) 0%, $blue 100%);
+
+$line-height: 26px;
+
+@mixin font-s {
+    font-size: 14px;
+    line-height: $line-height;
+}
+
+@mixin font-m {
+    font-size: 16px;
+    line-height: $line-height;
+}
+
+@mixin font-l {
+    font-size: 18px;
+    line-height: $line-height;
+}
+
+@mixin font-xl {
+    font-size: 20px;
+    line-height: $line-height;
+}
+
+@mixin font-xxl {
+    font-size: 32px;
+    line-height: $line-height;
+}
+
+
+@mixin noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

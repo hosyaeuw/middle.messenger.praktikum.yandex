@@ -1,0 +1,30 @@
+---
+stylesheets:
+- ./styles/chats.scss
+- ./styles/form_layout.scss
+- ../components/styles/button.scss
+- ../components/styles/input.scss
+---
+
+
+{{#extend "base_layout"}}
+    {{#content "main"}}
+        {{#extend "form_layout" buttonText="Create account" formTitle="Registration"}}
+            {{#content "form"}}
+                {{> input underline=true label="Email" type="email" name="email" }}
+                {{> input underline=true label="Login" name="login" }}
+                {{> input underline=true label="First Name" name="first_name" }}
+                {{> input underline=true label="Last Name" name="last_name" }}
+                {{> input underline=true label="Phone" name="phone" }}
+                {{> input underline=true label="Password" type="password" name="password" }}
+                {{> input underline=true label="Password (again)" type="password" name="password_again" }}
+            {{/content}}
+            {{#content "additionalBottomContent"}}
+                <div>
+                    <span>Have an account?</span>
+                    <a href="./index.hbs">Login</a>
+                </div>
+            {{/content}}
+        {{/extend}}
+    {{/content}}
+{{/extend}}

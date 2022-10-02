@@ -1,0 +1,17 @@
+<div class="message-container">
+    {{#unless isMe}}
+        <div class="message-avatar">
+            {{> avatar src=avatar}}
+        </div>
+    {{/unless}}
+    <div>
+        <div class="message message_{{ternary isMe 'me' 'opponent'}}">
+            <div class="message-text">
+                <p class="message-text-message">{{text}}</p>
+            </div>
+        </div>
+        <div class="message-time">
+            <time class="message-time">{{time}}</time>
+        </div>
+    </div>
+</div>

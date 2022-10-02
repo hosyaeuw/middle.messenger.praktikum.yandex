@@ -1,0 +1,30 @@
+<div class="menu">
+    <div class="menu-profile">
+        <div class="menu-profile-avatar">
+            {{> avatar src=profile.avatar size="xxl" }}
+            <div class="menu-profile-avatar__change">
+                <div class="menu-profile-avatar__change-content">
+                    <span>Change avatar</span>
+                </div>
+            </div>
+        </div>
+        <span class="menu-profile-name">{{ getUserFullName profile }}</span>
+    </div>
+    <nav class="links-container">
+        <ul class="links">
+            {{#each menu.links}}
+                    <li class="links__item {{ternary (isEqual ../activeTitle this.title) 'active' ''}}">
+                        <a href={{this.link}} class="links__item__link">
+                            {{#if this.icon}}
+                                <img src={{this.icon}} alt="{{this.title}}-icon">
+                            {{/if}}
+                            <span>{{this.title}}</span>
+                        </a>
+                    </li>
+            {{/each}}
+        </ul>        
+    </nav>
+    <div class="links__item">
+        {{> button format="line" color="ghost" children="log out" }}
+    </div>
+</div>

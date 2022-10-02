@@ -1,0 +1,12 @@
+<div class="input-container {{#if label}}input-container_with-label{{/if}}">
+    <input
+        class="input {{#if underline}}input_underline{{/if}} {{#if label}}input_hidden-placeholder{{/if}}"
+        name={{name}}
+        type={{valueOrDefault type "text"}}
+        placeholder="{{valueOrDefault placeholder (ternary label "hidden placeholder" "")}}"
+        {{#if defaultValue}}
+            value="{{defaultValue}}"
+        {{/if}}
+    />
+    <label class="input-label">{{label}}</label>
+</div>

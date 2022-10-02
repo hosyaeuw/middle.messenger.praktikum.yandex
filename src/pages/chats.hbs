@@ -1,0 +1,77 @@
+---
+title: 'Chats'
+
+placeholderNewMessage: 'Type a message here'
+placeholderSearch: 'Search'
+
+stylesheets:
+- ./styles/chats.scss
+- ./styles/main_layout.scss
+- ../components/styles/message.scss
+- ../components/styles/button.scss
+- ../components/styles/input.scss
+- ../components/styles/avatar.scss
+- ../components/styles/dialog.scss
+- ../components/styles/menu.scss
+---
+
+{{#extend "base_layout"}}
+    {{#content "main"}}
+        {{> menu activeTitle=title}}
+        {{#extend "main_layout"}}
+            {{#content "content"}}
+                <div class="chat">
+                    <div class="chat-dialogs">
+                        <div class="header">
+                            <h1 class="header-title">{{title}}</h1>
+                            <div class="header__button-wrapper">
+                                {{> button children="+ Create new chat"}}
+                            </div>
+                        </div>
+                        <div class="search">
+                            <div class="search__input-wrapper">
+                                {{> input placeholder=placeholderSearch }}
+                            </div>
+                        </div>
+                        <div class="dialogs">
+                            {{#each chats.dialogs}}
+                                {{> dialog selected=(isEqual (getUserFullName this.last_message.user) (getUserFullName ../openChat.opponent)) text=this.last_message.content unreadCount=this.unread_count time=this.last_message.time avatar=this.last_message.user.avatar name=(getUserFullName this.last_message.user) }}
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="chat-dialog">
+                        <div class="header">                    
+                            {{> avatar src=openChat.opponent.avatar size="l"}}
+                            <div>
+                                <span class="name">{{getUserFullName openChat.opponent}}</span>
+                            </div>
+                        </div>
+                        <div class="messages-block">
+                            <div class="messages">
+                                {{#each openChat.messages}}
+                                    <div class="messages__line messages__line_{{ternary (isEqual this.user_id ../profile.id) 'end' 'start'}}">
+                                        <div class="message-wrapper">
+                                            {{> message time=this.time text=this.content avatar=../openChat.opponent.avatar isMe=(isEqual this.user_id ../profile.id)}}
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <form class="new-message-form">
+                                <div class="new-message-form__content">
+                                    {{> button children="+" format="circle"}}
+                                    <div class="new-message-form__input-container">
+                                        {{> input name="message" placeholder=placeholderNewMessage }}
+                                    </div>
+                                    {{> button children="<img src='../assets/icons/chat-form/smile.png'/>" color="ghost" format="circle"}}
+                                    <span class="new-message-form__button-container">
+                                        {{> button children="<img src='../assets/icons/chat-form/cursor.png'/>" format="circle" type="submit"}}
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {{/content}}
+        {{/extend}}
+    {{/content}}
+{{/extend}}
