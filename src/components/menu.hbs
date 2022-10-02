@@ -13,14 +13,14 @@
     <nav class="links-container">
         <ul class="links">
             {{#each menu.links}}
-                <a href={{this.link}}>
                     <li class="links__item {{ternary (isEqual ../activeTitle this.title) 'active' ''}}">
-                    {{#if this.icon}}
-                        <img src={{this.icon}} alt="{{this.title}}-icon">
-                    {{/if}}
-                        <span>{{this.title}}</span>
+                        <a href={{this.link}} class="links__item__link">
+                            {{#if this.icon}}
+                                <img src={{this.icon}} alt="{{this.title}}-icon">
+                            {{/if}}
+                            <span>{{this.title}}</span>
+                        </a>
                     </li>
-                </a>
             {{/each}}
         </ul>        
     </nav>

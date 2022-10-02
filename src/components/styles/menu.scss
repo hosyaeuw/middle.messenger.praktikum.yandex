@@ -24,7 +24,7 @@ $active-link-color: variables.$blue;
         align-items: center;
         gap: $distance-between-photo-name;
 
-        &-name{
+        &-name {
             @include variables.font-l;
         }
 
@@ -78,7 +78,6 @@ $active-link-color: variables.$blue;
             align-items: center;
             padding-left: $distance-icon-text;
             height: $link-height;
-            gap: 12px;
             cursor: pointer;
             @include variables.font-m;
             text-transform: uppercase;
@@ -93,6 +92,13 @@ $active-link-color: variables.$blue;
                 img {
                     filter: invert(48%) sepia(94%) saturate(3334%) hue-rotate(194deg) brightness(100%) contrast(90%);
                 }
+            }
+
+            &__link {
+                gap: 12px;
+                display: flex;
+                align-items: center;
+                color: inherit
             }
         }
     }
