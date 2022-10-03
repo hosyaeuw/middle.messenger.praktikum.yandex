@@ -1,0 +1,5 @@
+@use '../../globalStyles/variables';
+
+.input-error{
+    color: variables.$red;
+}

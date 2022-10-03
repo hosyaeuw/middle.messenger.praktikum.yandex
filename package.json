@@ -1,21 +1,33 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache --open",
-    "build": "parcel build src/pages/index.hbs --no-cache",
-    "start": "npm run build && node app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "parcel": "^2.0.1"
-  },
-  "dependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-sass": "^2.7.0",
-    "express": "^4.18.1"
-  }
+    "name": "test",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "compile-images": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
+        "dev": "npm run compile-images && parcel src/index.html --no-cache --open",
+        "build": "parcel build src/pages/index.hbs --no-cache",
+        "start": "npm run build && node app.js"
+    },
+    "alias": {
+        "core": "./src/core",
+        "pages": "./src/pages",
+        "components": "./src/components",
+        "data": "./src/data",
+        "utils": "./src/utils",
+        "entities": "./src/entities",
+        "layouts": "./src/layouts",
+        "router": "./src/router"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "parcel": "^2.0.1"
+    },
+    "dependencies": {
+        "@anikin/parcel-transformer-handlebars": "^1.0.9",
+        "@parcel/transformer-sass": "^2.7.0",
+        "express": "^4.18.1",
+        "nanoid": "^4.0.0"
+    }
 }

@@ -1,0 +1,36 @@
+@use '../../globalStyles/variables';
+
+$blocks-gap: 20px;
+$form-width: 597px;
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: $blocks-gap;
+
+    .header-title {
+        font-weight: 400;
+    }
+
+    .form {
+        width: $form-width;
+
+        &__fields {
+            margin: 28px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        &-field {
+            display: flex;
+            justify-content: space-between;
+            @include variables.font-xl;
+            border-bottom: 3px solid rgba(variables.$grey, 0.25);
+
+            &__input {
+                width: 200px;
+            }
+        }
+    }
+}

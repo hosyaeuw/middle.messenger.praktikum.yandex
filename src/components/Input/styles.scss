@@ -1,0 +1,18 @@
+@use '../../globalStyles/variables';
+
+$height-container-without-label: 24px;
+$height-container-with-label: 40px;
+
+.input {
+    width: 100%;
+    border: none;
+    @include variables.font-xl;
+    align-items: center;
+    background: none;
+    padding: 4px 8px;
+    height: $height-container-without-label;
+
+    &_underline {
+        border-bottom: 3px solid rgba(variables.$grey, 0.25);
+    }
+}

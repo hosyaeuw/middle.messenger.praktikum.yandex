@@ -1,0 +1,48 @@
+@use '../../globalStyles/variables';
+
+$height-container-without-label: 24px;
+$height-container-with-label: 40px;
+
+.input {
+    width: 100%;
+    border: none;
+    @include variables.font-xl;
+    align-items: center;
+    background: none;
+    padding: 4px 8px;
+    height: $height-container-without-label;
+
+    &_underline {
+        border-bottom: 3px solid rgba(variables.$grey, 0.25);
+    }
+
+    &-container {
+        position: relative;
+        height: $height-container-without-label;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        &_with-label {
+            height: $height-container-with-label;
+        }
+    }
+
+    &-label {
+        position: absolute;
+        left: 4px;
+        color: variables.$grey;
+        transition: 0.1s ease all;
+        bottom: 4px;
+    }
+
+    &:focus+&-label,
+    &:not(:placeholder-shown)+&-label {
+        transform: translateY(-1.5em);
+        @include variables.font-s;
+    }
+
+    &_hidden-placeholder::placeholder {
+        color: transparent;
+    }
+}

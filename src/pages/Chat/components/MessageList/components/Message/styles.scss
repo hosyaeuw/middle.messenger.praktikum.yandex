@@ -1,0 +1,41 @@
+@use '../../../../../../globalStyles/variables';
+
+$messages-gap: 12px;
+$distance-to-scroll: 12px;
+
+.message {
+    padding: 14px 22px;
+    font-weight: 500;
+
+    &-time {
+        text-align: right;
+        color: variables.$grey;
+        opacity: 0.7;
+        padding-right: $distance-to-scroll;
+        @include variables.font-s;
+        font-weight: 500;
+    }
+
+    &-container {
+        display: flex;
+        gap: $messages-gap;
+    }
+
+    &_me {
+        color: variables.$grey;
+        border-radius: 10px 10px 0 10px;
+        background: variables.$white;
+        border: 1px solid rgba(variables.$grey, 0.25);
+        box-shadow: 10px 10px 25px rgba(variables.$grey, 0.05),
+            15px 15px 35px rgba(variables.$grey, 0.05);
+    }
+
+    &_opponent {
+        color: variables.$white;
+        border-radius: 0px 10px 10px 10px;
+        background: variables.$white-to-blue-gradient;
+        box-shadow: 10px 10px 25px rgba(variables.$blue, 0.1),
+            15px 15px 35px rgba(variables.$blue, 0.05),
+            10px 10px 50px rgba(variables.$blue, 0.1);
+    }
+}
