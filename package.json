@@ -5,7 +5,7 @@
     "scripts": {
         "compile-images-windows": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
         "dev-windows": "npm run compile-images-windows && parcel src/index.html --no-cache --open",
-        "build-windows": "parcel build-windows src/index.html --no-cache && npm run compile-images-windows",
+        "build-windows": "parcel build src/index.html --no-cache && npm run compile-images-windows",
         "start-windows": "npm run build-windows && node app.js",
         "compile-images": "cp -R src/assets ./dist",
         "dev": "npm run compile-images && parcel src/index.html --no-cache --open",
@@ -30,8 +30,10 @@
     },
     "dependencies": {
         "@parcel/transformer-sass": "2.7.0",
+        "@types/node": "18.8.2",
         "express": "4.18.1",
         "handlebars": "4.7.7",
-        "nanoid": "4.0.0"
+        "nanoid": "4.0.0",
+        "typescript": "4.8.4"
     }
 }

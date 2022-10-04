@@ -179,7 +179,7 @@
   dependencies:
     "@parcel/plugin" "2.7.0"
 
-"@parcel/config-default@2.7.0":
+"@parcel/config-default@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/config-default/-/config-default-2.7.0.tgz#2f6cec9c185b89e40f343549295cad21295621a8"
   integrity sha512-ZzsLr97AYrz8c9k6qn3DlqPzifi3vbP7q3ynUrAFxmt0L4+K0H9N508ZkORYmCgaFjLIQ8Y3eWpwCJ0AewPNIg==
@@ -215,7 +215,7 @@
     "@parcel/transformer-react-refresh-wrap" "2.7.0"
     "@parcel/transformer-svg" "2.7.0"
 
-"@parcel/core@2.7.0":
+"@parcel/core@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.7.0.tgz#3310f48230bd618735f199f159f37e6b45ed2710"
   integrity sha512-7yKZUdh314Q/kU/9+27ZYTfcnXS6VYHuG+iiUlIohnvUUybxLqVJhdMU9Q+z2QcPka1IdJWz4K4Xx0y6/4goyg==
@@ -252,7 +252,7 @@
   dependencies:
     lightningcss "^1.14.0"
 
-"@parcel/diagnostic@2.7.0":
+"@parcel/diagnostic@2.7.0", "@parcel/diagnostic@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/diagnostic/-/diagnostic-2.7.0.tgz#cf2596a20ce9277334616e12bbdac98490189e99"
   integrity sha512-pdq/cTwVoL0n8yuDCRXFRSQHVWdmmIXPt3R3iT4KtYDYvOrMT2dLPT79IMqQkhYPANW8GuL15n/WxRngfRdkug==
@@ -260,7 +260,7 @@
     "@mischnic/json-sourcemap" "^0.1.0"
     nullthrows "^1.1.1"
 
-"@parcel/events@2.7.0":
+"@parcel/events@2.7.0", "@parcel/events@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/events/-/events-2.7.0.tgz#b6db8464d45626686134d412d3a36d024ffb1482"
   integrity sha512-kQDwMKgZ1U4M/G17qeDYF6bW5kybluN6ajYPc7mZcrWg+trEI/oXi81GMFaMX0BSUhwhbiN5+/Vb2wiG/Sn6ig==
@@ -272,7 +272,7 @@
   dependencies:
     detect-libc "^1.0.3"
 
-"@parcel/fs@2.7.0":
+"@parcel/fs@2.7.0", "@parcel/fs@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/fs/-/fs-2.7.0.tgz#c9a0c60bdbef7101ff47f2db6b23814c3db06007"
   integrity sha512-PU5fo4Hh8y03LZgemgVREttc0wyHQUNmsJCybxTB7EjJie2CqJRumo+DFppArlvdchLwJdc9em03yQV/GNWrEg==
@@ -299,7 +299,7 @@
     detect-libc "^1.0.3"
     xxhash-wasm "^0.4.2"
 
-"@parcel/logger@2.7.0":
+"@parcel/logger@2.7.0", "@parcel/logger@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/logger/-/logger-2.7.0.tgz#1aa1de0458bdd613714ce4031134d92135aec590"
   integrity sha512-qjMY/bYo38+o+OiIrTRldU9CwL1E7J72t+xkTP8QIcUxLWz5LYR0YbynZUVulmBSfqsykjjxCy4a+8siVr+lPw==
@@ -390,7 +390,7 @@
     nullthrows "^1.1.1"
     terser "^5.2.0"
 
-"@parcel/package-manager@2.7.0":
+"@parcel/package-manager@2.7.0", "@parcel/package-manager@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/package-manager/-/package-manager-2.7.0.tgz#5de1bf5c94d95330e98dffb2a66c22d1f20c4c8a"
   integrity sha512-wmfSX1mRrTi8MeA4KrnPk/x7zGUsILCQmTo6lA4gygzAxDbM1pGuyFN8/Kt0y0SFO2lbljARtD/4an5qdotH+Q==
@@ -461,7 +461,7 @@
   dependencies:
     "@parcel/types" "2.7.0"
 
-"@parcel/reporter-cli@2.7.0":
+"@parcel/reporter-cli@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/reporter-cli/-/reporter-cli-2.7.0.tgz#86499624e258034001b64c10b14e23ae4b92f44b"
   integrity sha512-80gEODg8cnAmnxGVuaSVDo8JJ54P9AA2bHwSs1cIkHWlJ3BjDQb83H31bBHncJ5Kn5kQ/j+7WjlqHpTCiOR9PA==
@@ -472,7 +472,7 @@
     chalk "^4.1.0"
     term-size "^2.2.1"
 
-"@parcel/reporter-dev-server@2.7.0":
+"@parcel/reporter-dev-server@2.7.0", "@parcel/reporter-dev-server@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/reporter-dev-server/-/reporter-dev-server-2.7.0.tgz#9bd3d10f745e0cbc9ab983ec046953c2c564dcb2"
   integrity sha512-ySuou5addK8fGue8aXzo536BaEjMujDrEc1xkp4TasInXHVcA98b+SYX5NAZTGob5CxKvZQ5ylhg77zW30B+iA==
@@ -650,7 +650,7 @@
     "@parcel/utils" "2.7.0"
     react-refresh "^0.9.0"
 
-"@parcel/transformer-sass@^2.7.0":
+"@parcel/transformer-sass@2.7.0":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-sass/-/transformer-sass-2.7.0.tgz#651b7a88bbc1ef452ace90ccb0883c1ad8cff721"
   integrity sha512-6m2T6Y5eQLX7ckIeuOjXXIZbzhyovnl69AvJ2FujoWb2nA55H/kg6ZdbKjo3CfXkOfg9LyG3nVnOE5PMgMpRFQ==
@@ -686,7 +686,7 @@
     "@parcel/workers" "2.7.0"
     utility-types "^3.10.0"
 
-"@parcel/utils@2.7.0":
+"@parcel/utils@2.7.0", "@parcel/utils@^2.0.1":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@parcel/utils/-/utils-2.7.0.tgz#f795d0f43efdd449ab0bbfac3632cd7f3ec0e4dd"
   integrity sha512-jNZ5bIGg1r1RDRKi562o4kuVwnz+XJ2Ie3b0Zwrqwvgfj6AbRFIKzDd+h85dWWmcDYzKUbHp11u6VJl1u8Vapg==
@@ -730,6 +730,11 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
+
+"@types/node@18.8.2":
+  version "18.8.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.2.tgz#17d42c6322d917764dd3d2d3a10d7884925de067"
+  integrity sha512-cRMwIgdDN43GO4xMWAfJAecYn8wV4JbsOGHNfNUIDiuYkUYAR5ec4Rj7IO2SAhFPEfpPtLtUTbbny/TCT7aDwA==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1115,7 +1120,7 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
-express@^4.18.1:
+express@4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.18.1.tgz#7797de8b9c72c857b9cd0e14a5eea80666267caf"
   integrity sha512-zZBcOX9TfehHQhtupq57OF8lFZ3UZi08Y97dwFCkD8p9d/d2Y3M+ykKcwaMDEL+4qyUolgBDX6AblpR3fL212Q==
@@ -1220,7 +1225,7 @@ globals@^13.2.0:
   dependencies:
     type-fest "^0.20.2"
 
-handlebars@^4.7.7:
+handlebars@4.7.7:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
   integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
@@ -1515,7 +1520,7 @@ msgpackr@^1.5.4:
   optionalDependencies:
     msgpackr-extract "^2.1.2"
 
-nanoid@^4.0.0:
+nanoid@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.0.tgz#6e144dee117609232c3f415c34b0e550e64999a5"
   integrity sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==
@@ -1589,21 +1594,21 @@ ordered-binary@^1.2.4:
   resolved "https://registry.yarnpkg.com/ordered-binary/-/ordered-binary-1.4.0.tgz#6bb53d44925f3b8afc33d1eed0fa15693b211389"
   integrity sha512-EHQ/jk4/a9hLupIKxTfUsQRej1Yd/0QLQs3vGvIqg5ZtCYSzNhkzHoZc7Zf4e4kUlDaC3Uw8Q/1opOLNN2OKRQ==
 
-parcel@^2.0.1:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/parcel/-/parcel-2.7.0.tgz#41fdd3e5c7144d4cf7f1fa3ab8d0ea0d47d31f77"
-  integrity sha512-pRYwnivwtNP0tip8xYSo4zCB0XhLt7/gJzP1p8OovCqkmFjG9VG+GW9TcAKqMIo0ovEa9tT+/s6gY1Qy+BONGQ==
+parcel@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/parcel/-/parcel-2.0.1.tgz#ec3f86259cef21ff9db4bcc56bc28518a0c14f0d"
+  integrity sha512-tGc7p3CbltlxYiu5u8NmFc2T5G3JZQDbKjlxDtjDpsNvLS6twX0Wu/D/HufaUKXyZr7O9JV7by3E+6DIo5cr5Q==
   dependencies:
-    "@parcel/config-default" "2.7.0"
-    "@parcel/core" "2.7.0"
-    "@parcel/diagnostic" "2.7.0"
-    "@parcel/events" "2.7.0"
-    "@parcel/fs" "2.7.0"
-    "@parcel/logger" "2.7.0"
-    "@parcel/package-manager" "2.7.0"
-    "@parcel/reporter-cli" "2.7.0"
-    "@parcel/reporter-dev-server" "2.7.0"
-    "@parcel/utils" "2.7.0"
+    "@parcel/config-default" "^2.0.1"
+    "@parcel/core" "^2.0.1"
+    "@parcel/diagnostic" "^2.0.1"
+    "@parcel/events" "^2.0.1"
+    "@parcel/fs" "^2.0.1"
+    "@parcel/logger" "^2.0.1"
+    "@parcel/package-manager" "^2.0.1"
+    "@parcel/reporter-cli" "^2.0.1"
+    "@parcel/reporter-dev-server" "^2.0.1"
+    "@parcel/utils" "^2.0.1"
     chalk "^4.1.0"
     commander "^7.0.0"
     get-port "^4.2.0"
@@ -1913,6 +1918,11 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+typescript@4.8.4:
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
+  integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
 
 uglify-js@^3.1.4:
   version "3.17.2"
