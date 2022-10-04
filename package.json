@@ -27,6 +27,8 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^18.8.2",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
         "parcel": "2.0.1",
         "typescript": "^4.8.4"
     },
