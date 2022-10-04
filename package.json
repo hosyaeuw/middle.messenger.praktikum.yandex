@@ -6,11 +6,11 @@
         "compile-images-windows": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
         "dev-windows": "npm run compile-images-windows && parcel src/index.html --no-cache --open",
         "build-windows": "parcel build src/index.html --no-cache && npm run compile-images-windows",
-        "start-windows": "npm run build-windows && node app.js",
+        "start-windows": "npm run build-windows && node app.ts",
         "compile-images": "cp -R src/assets ./dist",
         "dev": "npm run compile-images && parcel src/index.html --no-cache --open",
         "build": "parcel build src/index.html --no-cache && npm run compile-images",
-        "start": "npm run build && node app.js"
+        "start": "npm run build && node app.ts"
     },
     "alias": {
         "core": "./src/core",
