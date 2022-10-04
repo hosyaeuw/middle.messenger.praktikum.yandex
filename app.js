@@ -5,10 +5,12 @@ const app = express();
 const defaultPort = 3000;
 const PORT = process.env.PORT || defaultPort;
 
-app.use(express.static(path.join(__dirname, "dist")));
+const staticFolder = path.join(__dirname, "dist")
 
-app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname, "./index.html"));
+app.use(express.static(staticFolder));
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.resolve(staticFolder, "./index.html"));
 });
 
 app.listen(PORT, () => console.log(`App listening to port ${PORT}`));
