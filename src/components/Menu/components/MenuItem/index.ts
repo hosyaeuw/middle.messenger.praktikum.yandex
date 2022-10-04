@@ -8,6 +8,8 @@ export type Props = {
 };
 
 export default class MenuItem extends Block<Props> {
+    static componentName = 'MenuItem';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             title: 'Link',

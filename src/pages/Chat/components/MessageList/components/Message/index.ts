@@ -13,6 +13,8 @@ export type Props = {
 };
 
 export default class Message extends Block<Props> {
+    static componentName = 'Message';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             author: 'me',

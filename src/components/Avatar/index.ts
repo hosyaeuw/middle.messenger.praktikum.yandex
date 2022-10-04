@@ -9,6 +9,8 @@ type Props = {
 };
 
 export default class Avatar extends Block<Props> {
+    static componentName = 'Avatar';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             src: '#',

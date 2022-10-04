@@ -31,6 +31,8 @@ const generateValidDialog = (dialog: TDialog): TDialogProps => {
 };
 
 export default class DialogList extends Block<Props> {
+    static componentName = 'DialogList';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             dialogs: [],

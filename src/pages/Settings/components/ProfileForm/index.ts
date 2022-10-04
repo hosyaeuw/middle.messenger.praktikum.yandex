@@ -29,6 +29,8 @@ type ComponentProps = Props & {
 };
 
 export default class ProfileForm extends Block<ComponentProps> {
+    static componentName = 'ProfileForm';
+
     constructor(props: Props) {
         const defaultProps: ComponentProps = {
             formChanged: false,

@@ -10,6 +10,8 @@ type Props = {
 };
 
 export default class FormLayout extends Block<Props> {
+    static componentName = 'FormLayout';
+
     constructor(props: Props) {
         if (props.onSubmit) {
             if (!props.events) {

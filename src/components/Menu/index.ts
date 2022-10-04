@@ -23,6 +23,8 @@ const isActiveLink = (link: string) => {
 };
 
 export default class Menu extends Block<ComponentProps> {
+    static componentName = 'Menu';
+
     constructor(props: Props) {
         super(props);
 

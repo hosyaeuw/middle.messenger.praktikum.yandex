@@ -12,6 +12,8 @@ type Props = PropsMessage & {
 };
 
 export default class MessageItem extends Block<Props> {
+    static componentName = 'MessageItem';
+
     constructor(props: Props) {
         super(props);
 

@@ -9,6 +9,8 @@ type Props = {
 };
 
 export default class ErrorPage extends Block<Props> {
+    static componentName = 'ErrorPage';
+
     constructor(props: Props) {
         super(props);
     }

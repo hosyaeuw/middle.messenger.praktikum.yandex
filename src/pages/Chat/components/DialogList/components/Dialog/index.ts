@@ -16,6 +16,8 @@ type Props = TDialogProps & {
 };
 
 export default class Dialog extends Block<Props> {
+    static componentName = 'Dialog';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             src: '#',

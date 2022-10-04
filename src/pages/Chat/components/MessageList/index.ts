@@ -23,6 +23,8 @@ const generateValidMessages = (message: TMessage): PropsMessage => {
 };
 
 export default class MessageList extends Block<Props> {
+    static componentName = 'MessageList';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             messages: [],

@@ -17,6 +17,8 @@ type Props = {
 };
 
 export default class InputField extends Block<Props> {
+    static componentName = 'InputField';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             type: 'text',

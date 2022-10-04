@@ -14,6 +14,8 @@ type ComponentProps = Props & {
 };
 
 export default class Auth extends Block<ComponentProps> {
+    static componentName = 'Auth';
+
     constructor() {
         super();
 

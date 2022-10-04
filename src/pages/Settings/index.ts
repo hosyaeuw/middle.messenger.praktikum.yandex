@@ -10,6 +10,8 @@ import './styles.scss';
 type Props = {};
 
 export default class Settings extends Block<Props> {
+    static componentName = 'Settings';
+
     constructor() {
         super();
     }

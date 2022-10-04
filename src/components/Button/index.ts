@@ -17,6 +17,8 @@ type Props = {
 };
 
 export default class Button extends Block<Props> {
+    static componentName = 'Button';
+
     constructor(props: Props) {
         const defaultProps: Props = {
             color: 'blue',

@@ -24,6 +24,8 @@ type ComponentProps = Props & {
 };
 
 export default class Chat extends Block<ComponentProps> {
+    static componentName = 'Chat';
+
     constructor() {
         super();
 

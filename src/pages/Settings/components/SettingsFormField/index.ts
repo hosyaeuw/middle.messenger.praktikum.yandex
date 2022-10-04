@@ -5,6 +5,8 @@ type Props = {
 };
 
 export default class SettingsFormField extends Block<Props> {
+    static componentName = 'SettingsFormField';
+
     constructor(props: Props) {
         super(props);
     }

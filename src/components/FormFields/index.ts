@@ -4,6 +4,8 @@ import './styles.scss';
 type Props = {};
 
 export default class FormFields extends Block<Props> {
+    static componentName = 'FormFields';
+
     constructor(props: Props) {
         super(props);
     }

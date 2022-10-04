@@ -4,6 +4,8 @@ import './styles.scss';
 type Props = {};
 
 export default class MainLayout extends Block<Props> {
+    static componentName = 'MainLayout';
+
     constructor() {
         super();
     }

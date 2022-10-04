@@ -17,6 +17,8 @@ type ComponentProps = Props & {
 };
 
 export default class PasswordForm extends Block<ComponentProps> {
+    static componentName = 'PasswordForm';
+
     constructor(props: Props) {
         const defaultProps: ComponentProps = {
             formChanged: false,

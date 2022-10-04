@@ -12,6 +12,8 @@ type ComponentProps = {
 };
 
 export default class NewMessageForm extends Block<ComponentProps> {
+    static componentName = 'NewMessageForm';
+
     constructor() {
         super();
 

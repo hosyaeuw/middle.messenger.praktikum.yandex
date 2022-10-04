@@ -18,6 +18,8 @@ type Props = {
 };
 
 export default class Input extends Block<Props> {
+    static componentName = 'Input';
+
     constructor(props: Props) {
         props.events = {};
         props.events.blur = e => {
