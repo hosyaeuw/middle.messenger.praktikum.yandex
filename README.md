@@ -1,17 +1,17 @@
 Messenger
 ==============================
 
-A messenger for Yandex Practicum using [handlerbars](https://handlebarsjs.com/)
+A messenger for Yandex Practicum using [handlerbars](https://handlebarsjs.com/) and typescript
 
 Figma - https://www.figma.com/file/7n0qOO1icKrAqh1sL0qjKy/Chat-Dashboard?node-id=102%3A426
 
-👉 [Pull request](https://github.com/hosyaeuw/middle.messenger.praktikum.yandex/pull/1)
+👉 [Pull request](https://github.com/hosyaeuw/middle.messenger.praktikum.yandex/pull/2)
 ---
 Setup
 -----
 Clone the repo:
 
-    git clone https://github.com/hosyaeuw/middle.messenger.praktikum.yandex.git -b sprint_1
+    git clone https://github.com/hosyaeuw/middle.messenger.praktikum.yandex.git -b sprint_2
 
 Move to the project path:
 

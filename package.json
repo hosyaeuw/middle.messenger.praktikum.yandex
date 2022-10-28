@@ -5,12 +5,12 @@
     "scripts": {
         "compile-images-windows": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
         "dev-windows": "npm run compile-images-windows && parcel src/index.html --no-cache --open",
-        "build-windows": "parcel build-windows src/index.html --no-cache && npm run compile-images-windows",
-        "start-windows": "npm run build-windows && node app.js",
+        "build-windows": "parcel build src/index.html --no-cache && npm run compile-images-windows",
+        "start-windows": "npm run build-windows && node app.ts",
         "compile-images": "cp -R src/assets ./dist",
         "dev": "npm run compile-images && parcel src/index.html --no-cache --open",
         "build": "parcel build src/index.html --no-cache && npm run compile-images",
-        "start": "npm run build && node app.js"
+        "start": "npm run build && node app.ts"
     },
     "alias": {
         "core": "./src/core",
@@ -31,7 +31,14 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "parcel": "2.0.1"
+        "@types/node": "^18.8.2",
+        "eslint": "^8.24.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "parcel": "2.0.1",
+        "stylelint": "^14.13.0",
+        "stylelint-config-standard": "^28.0.0",
+        "typescript": "^4.8.4"
     },
     "dependencies": {
         "@parcel/transformer-sass": "2.7.0",
