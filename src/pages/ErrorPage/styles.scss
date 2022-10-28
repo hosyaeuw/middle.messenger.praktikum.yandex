@@ -1,0 +1,25 @@
+@use '../../globalStyles/variables';
+
+.root-error-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .error-page {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 368px;
+
+        &-title {
+            @include variables.font-xl;
+            font-weight: 500;
+            margin-bottom: 36px;
+        }
+
+        &-description {
+            margin-bottom: 52;
+        }
+    }
+}

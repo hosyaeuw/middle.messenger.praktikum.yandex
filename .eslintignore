@@ -1,0 +1,7 @@
+/dist
+/static
+*.css
+*.scss
+*.json
+*.md
+.eslintrc.json

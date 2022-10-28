@@ -1,0 +1,14 @@
+.main-container {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+
+    .main-content {
+        padding-top: 110px;
+        background: linear-gradient(180deg, #F3F3FB 0%, #FDFBFD 100%);
+        flex: 1;
+        overflow: hidden;
+        padding-left: 60px;
+        height: 100%;
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "extends": ["plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "linebreak-style": "off"
+    },
+    "overrides": [
+        {
+            "files": ["**/*.ts?(x)"],
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": "off",
+                "import/order": [
+                    "warn",
+                    {
+                        "groups": ["builtin", "external", "internal", "index"],
+                        "pathGroupsExcludedImportTypes": ["builtin"],
+                        "newlines-between": "always-and-inside-groups",
+                        "alphabetize": {
+                            "order": "asc",
+                            "caseInsensitive": true
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

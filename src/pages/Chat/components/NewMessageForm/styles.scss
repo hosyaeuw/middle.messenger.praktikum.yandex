@@ -1,0 +1,31 @@
+@use '../../../../globalStyles/variables';
+
+.new-message-form {
+    height: 90px;
+    margin: 0 60px;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid rgba(variables.$grey, 0.15);
+
+    &__content {
+        flex: 1;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__button {
+        &-container {
+            img {
+                filter: invert(98%) sepia(15%) saturate(5200%) hue-rotate(180deg) brightness(114%) contrast(101%);
+            }
+        }
+    }
+
+    &__input {
+        &-container {
+            flex: 1;
+        }
+    }
+}
