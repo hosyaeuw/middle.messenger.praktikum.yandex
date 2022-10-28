@@ -10,6 +10,15 @@ $white-to-blue-gradient: linear-gradient(90.54deg, lighten($blue, 10) 0%, $blue 
 
 $line-height: 26px;
 
+$index-modal: 8000;
+$index-menu: 7000;
+
+@mixin center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin font-s {
     font-size: 14px;
     line-height: $line-height;

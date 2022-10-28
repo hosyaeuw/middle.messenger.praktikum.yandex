@@ -4,7 +4,7 @@ const json = {
     links: [
         {
             title: 'Chat',
-            link: Path.chat,
+            link: Path.messenger,
             icon: 'assets/icons/menu/chat.png',
         },
         {

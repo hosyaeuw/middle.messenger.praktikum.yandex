@@ -10,41 +10,67 @@ enum Method {
 
 type Options = {
     method: Method;
-    data?: Record<string, unknown>;
+    data?: Record<string, unknown> | FormData;
     timeout?: number;
     headers?: Record<string, string>;
 };
 
+type Response<T> = {
+    response: T;
+    status: number;
+    responseHeaders: Record<string, string>;
+};
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 export default class HTTP {
-    get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    baseURL: string | undefined = undefined;
+
+    constructor(baseURL?: string) {
+        this.baseURL = baseURL;
+    }
+
+    addConfig(data: { baseURL?: string }) {
+        const { baseURL } = data;
+
+        this.baseURL = baseURL;
+    }
+
+    get<T>(url: string, options: OptionsWithoutMethod = {}): Promise<Response<T>> {
         const { data } = options;
-        return this._send(data ? `${url}&${queryStringify(data)}` : url, {
-            ...options,
-            method: Method.GET,
-        });
+        return this._send(
+            data ? `${url}&${queryStringify(data as Record<string, unknown>)}` : url,
+            {
+                ...options,
+                method: Method.GET,
+            },
+        );
     }
 
-    put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this._send(url, { ...options, method: Method.PUT });
-    }
-
-    post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    post<T>(url: string, options: OptionsWithoutMethod = {}): Promise<Response<T>> {
         return this._send(url, { ...options, method: Method.POST });
     }
 
-    delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    put<T>(url: string, options: OptionsWithoutMethod = {}): Promise<Response<T>> {
+        return this._send(url, { ...options, method: Method.PUT });
+    }
+
+    delete<T>(url: string, options: OptionsWithoutMethod = {}): Promise<Response<T>> {
         return this._send(url, { ...options, method: Method.DELETE });
     }
 
-    private _send(url: string, options: Options = { method: Method.GET }): Promise<XMLHttpRequest> {
-        const { method, data, headers, timeout } = options;
+    private _send<T>(url: string, options: Options = { method: Method.GET }): Promise<Response<T>> {
+        let { method, data, headers = {}, timeout } = options;
 
         return new Promise((resolve, reject) => {
+            if (Object.keys(headers).length == 0 && !(data instanceof FormData)) {
+                headers = {
+                    'Content-Type': 'application/json',
+                };
+            }
             let xhrTimeout: number | undefined;
             const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
 
-            xhr.open(method, url);
+            xhr.open(method, this.baseURL ? this.baseURL + url : url);
 
             if (headers) {
                 Object.entries(headers).forEach(([key, value]) => {
@@ -56,7 +82,33 @@ export default class HTTP {
                 if (xhrTimeout) {
                     clearTimeout(xhrTimeout);
                 }
-                resolve(xhr);
+
+                let response = xhr.response;
+
+                // Parse response headers
+                const responseHeaders: Record<string, string> = {};
+                xhr.getAllResponseHeaders()
+                    .trim()
+                    .split(/[\r\n]+/)
+                    .forEach(line => {
+                        const parts = line.split(': ');
+                        const header = parts.shift() as string;
+                        const value = parts.join(': ');
+                        responseHeaders[header] = value;
+                    });
+
+                if (
+                    response.length > 0 &&
+                    responseHeaders['content-type'].includes('application/json')
+                ) {
+                    response = JSON.parse(response);
+                }
+
+                resolve({
+                    response,
+                    status: xhr.status,
+                    responseHeaders,
+                });
             };
 
             xhr.onabort = reject;
@@ -69,8 +121,9 @@ export default class HTTP {
 
             if (method === Method.GET || !data) {
                 xhr.send();
+            } else if (data instanceof FormData) {
+                xhr.send(data);
             } else {
-                xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify(data));
             }
         });

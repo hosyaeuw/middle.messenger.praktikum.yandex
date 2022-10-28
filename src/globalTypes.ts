@@ -7,7 +7,7 @@ declare global {
         readonly target: T;
     }
 
-    export type anyObj = Record<string, unknown>
+    export type anyObj = Record<string, any>
 }
 
 export {};

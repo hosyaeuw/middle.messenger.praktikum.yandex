@@ -3,9 +3,13 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "compile-images": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
+        "compile-images-windows": "xcopy \"src/assets\" \"dist/assets\" /s/e/k/c/i/y",
+        "dev-windows": "npm run compile-images-windows && parcel src/index.html --no-cache --open",
+        "build-windows": "parcel build-windows src/index.html --no-cache && npm run compile-images-windows",
+        "start-windows": "npm run build-windows && node app.js",
+        "compile-images": "cp -R src/assets ./dist",
         "dev": "npm run compile-images && parcel src/index.html --no-cache --open",
-        "build": "parcel build src/pages/index.hbs --no-cache",
+        "build": "parcel build src/index.html --no-cache && npm run compile-images",
         "start": "npm run build && node app.js"
     },
     "alias": {
@@ -16,18 +20,23 @@
         "utils": "./src/utils",
         "entities": "./src/entities",
         "layouts": "./src/layouts",
-        "router": "./src/router"
+        "router": "./src/router",
+        "controllers": "./src/controllers/",
+        "store": "./src/store/",
+        "services": "./src/services/",
+        "config": "./src/config",
+        "httpClient": "./src/httpClient/"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "parcel": "^2.0.1"
+        "parcel": "2.0.1"
     },
     "dependencies": {
-        "@anikin/parcel-transformer-handlebars": "^1.0.9",
-        "@parcel/transformer-sass": "^2.7.0",
-        "express": "^4.18.1",
-        "nanoid": "^4.0.0"
+        "@parcel/transformer-sass": "2.7.0",
+        "express": "4.18.1",
+        "handlebars": "4.7.7",
+        "nanoid": "4.0.0"
     }
 }

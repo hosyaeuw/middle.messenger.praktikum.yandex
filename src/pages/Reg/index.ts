@@ -1,10 +1,14 @@
+import { TRegData } from 'controllers/AuthController';
 import { Block } from 'core';
 import { Path } from 'router';
+import userService from 'services/userService';
+import convertingDataToSend from 'utils/convertingDataToSend';
 import FormHelper from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
 import { Require } from 'utils/validators';
 import { checkValidators } from 'utils/validators/checkValidators';
 import {
+    emailValidators,
     loginValidators,
     messages,
     nameValidators,
@@ -34,7 +38,7 @@ export default class Auth extends Block<ComponentProps> {
                 ]),
                 email: FormHelper.validate([
                     new Require({ msg: messages.require }),
-                    ...passwordValidators(),
+                    ...emailValidators(),
                 ]),
                 firstName: FormHelper.validate([
                     new Require({ msg: messages.require }),
@@ -77,8 +81,9 @@ export default class Auth extends Block<ComponentProps> {
             }
         }
 
-        console.log(formValues);
-        window.location.replace(Path.chat);
+        const { registration } = userService();
+
+        registration(convertingDataToSend(formValues) as TRegData);
     }
 
     render() {
@@ -147,7 +152,7 @@ export default class Auth extends Block<ComponentProps> {
                 {{{Button type="submit" content="Create account"}}}
                 <div>
                     <span>Have an account?</span>
-                    <a href='./auth'>Login</a>
+                    <a href=${Path.login}>Login</a>
                 </div>
             {{/FormLayout}}
         `;

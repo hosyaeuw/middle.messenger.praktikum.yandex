@@ -12,7 +12,6 @@ type Props = {
 
 const generateValidMessages = (message: TMessage): PropsMessage => {
     const messageEntity = new MessageEntity(message);
-
     return {
         author: messageEntity.isMe ? 'me' : 'opponent',
         text: messageEntity.text,
@@ -29,8 +28,8 @@ export default class MessageList extends Block<Props> {
         const defaultProps: Props = {
             messages: [],
         };
-
         props.validMessages = (props.messages || []).map(generateValidMessages);
+
         super(Object.assign(defaultProps, props));
     }
 

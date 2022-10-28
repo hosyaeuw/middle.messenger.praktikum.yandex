@@ -2,7 +2,7 @@ import { Block } from 'core';
 import './styles.scss';
 
 type colors = 'blue' | 'ghost';
-type formats = 'rect' | 'circle' | 'line';
+type formats = 'rect' | 'circle' | 'link';
 
 type Props = {
     content?: string | Block;

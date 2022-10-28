@@ -1,3 +1,5 @@
+import { BASE_MEDIA_URL } from 'httpClient/api';
+
 export interface IOpponent {
     first_name: string;
     second_name: string;
@@ -13,6 +15,7 @@ export interface IUser extends IOpponent {
 export interface IProfile extends IUser {
     id: number;
     display_name: string;
+    role?: string;
 }
 
 class ABCUser {
@@ -23,7 +26,11 @@ class ABCUser {
     }
 
     get avatar() {
-        return this.user.avatar;
+        if (!/http|https/.test(this.user?.avatar)) {
+            return `${BASE_MEDIA_URL}${this.user?.avatar}`;
+        }
+
+        return 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';
     }
 
     get firstName() {
@@ -56,6 +63,10 @@ export class Profile extends ABCUser {
         super(user);
     }
 
+    get id() {
+        return this.user.id;
+    }
+
     get displayName() {
         return this.user.display_name;
     }
@@ -70,5 +81,9 @@ export class Profile extends ABCUser {
 
     get phone() {
         return this.user.phone;
+    }
+
+    get role() {
+        return this.user.role ?? 'regular';
     }
 }

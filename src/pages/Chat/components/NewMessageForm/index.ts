@@ -1,4 +1,4 @@
-import { Block, registerComponent } from 'core';
+import { Block } from 'core';
 import { getFormValues } from 'utils/getFormValues';
 import { checkValidators } from 'utils/validators/checkValidators';
 import FormHelper from 'utils/FormHelper';
@@ -6,7 +6,11 @@ import { messageValidators } from 'utils/validators/validators';
 
 import './styles.scss';
 
-type ComponentProps = {
+type Props = {
+    onSubmit?: (values: any) => void;
+};
+
+type ComponentProps = Props & {
     validators?: Record<string, (value: string) => string | undefined>;
     defaultValues?: Record<string, string>;
 };
@@ -14,8 +18,8 @@ type ComponentProps = {
 export default class NewMessageForm extends Block<ComponentProps> {
     static componentName = 'NewMessageForm';
 
-    constructor() {
-        super();
+    constructor(props: Props) {
+        super(props);
 
         this.setProps({
             events: {
@@ -49,7 +53,7 @@ export default class NewMessageForm extends Block<ComponentProps> {
             }
         }
 
-        console.log(formValues);
+        this.props.onSubmit && this.props.onSubmit(formValues)
     }
 
     render() {

@@ -1,9 +1,11 @@
 const json = {
-    opponent: {
-        first_name: 'Nika',
-        second_name: 'Jerrardo',
-        avatar: 'https://thispersondoesnotexist.com/image',
-    },
+    opponent: [
+        {
+            first_name: 'Nika',
+            second_name: 'Jerrardo',
+            avatar: 'https://thispersondoesnotexist.com/image',
+        },
+    ],
     messages: [
         {
             content: 'Hello! I tweaked everything you asked. I am sending the finished file.',

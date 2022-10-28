@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import { Profile } from 'entities/user';
+import userService from 'services/userService';
 
-import profile from 'data/profile';
 import { checkValidators } from 'utils/validators/checkValidators';
 import { Require } from 'utils/validators';
 import FormHelper from 'utils/FormHelper';
@@ -15,6 +15,9 @@ import {
     nameValidators,
     phoneValidators,
 } from 'utils/validators/validators';
+import { TChangeProfileData } from 'controllers/UserController';
+import store from 'store';
+import convertingDataToSend from 'utils/convertingDataToSend';
 
 type Props = {
     events?: {
@@ -28,6 +31,19 @@ type ComponentProps = Props & {
     defaultValues?: Record<string, string>;
 };
 
+const generateDefaultValues = (profile: any) => {
+    const profileEntity = new Profile(profile);
+
+    return {
+        email: profileEntity.email,
+        login: profileEntity.login,
+        firstName: profileEntity.firstName,
+        secondName: profileEntity.secondName,
+        displayName: profileEntity.displayName,
+        phone: profileEntity.phone,
+    };
+};
+
 export default class ProfileForm extends Block<ComponentProps> {
     static componentName = 'ProfileForm';
 
@@ -37,21 +53,14 @@ export default class ProfileForm extends Block<ComponentProps> {
         };
         super(Object.assign(defaultProps, props));
 
-        const profileEntity = new Profile(profile);
+        const { profile } = userService();
 
         this.setProps({
             onChangeHandler: this.onChangeHandler.bind(this),
             events: {
                 submit: this.onSubmitHandler.bind(this),
             },
-            defaultValues: {
-                email: profileEntity.email,
-                login: profileEntity.login,
-                firstName: profileEntity.firstName,
-                secondName: profileEntity.secondName,
-                displayName: profileEntity.displayName,
-                phone: profileEntity.phone,
-            },
+            defaultValues: generateDefaultValues(profile),
             validators: {
                 email: FormHelper.validate([
                     new Require({ msg: messages.require }),
@@ -81,6 +90,14 @@ export default class ProfileForm extends Block<ComponentProps> {
         });
     }
 
+    componentDidMount() {
+        store.subscribe(state => {
+            this.setProps({
+                defaultValues: generateDefaultValues(state.profile),
+            });
+        }, 'Profile');
+    }
+
     getForm() {
         return this._element!.getElementsByTagName('form')[0];
     }
@@ -103,7 +120,11 @@ export default class ProfileForm extends Block<ComponentProps> {
             }
         }
 
-        console.log(formValues);
+        const { changeProfile } = userService();
+
+        changeProfile(convertingDataToSend(formValues) as TChangeProfileData).then(() => {
+            this.onDisabledButton(true);
+        });
     }
 
     onDisabledButton(disabled: boolean) {

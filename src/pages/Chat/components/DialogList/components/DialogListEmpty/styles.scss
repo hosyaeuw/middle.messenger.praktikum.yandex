@@ -1,0 +1,6 @@
+@use '../../../../../../globalStyles/variables';
+
+.dialog-list-empty {
+    @include variables.center-container;
+    flex: 1;
+}

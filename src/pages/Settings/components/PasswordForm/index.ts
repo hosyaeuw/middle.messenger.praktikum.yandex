@@ -1,6 +1,9 @@
+import { TChangePasswordData } from 'controllers/UserController';
 import { Block } from 'core';
+import userService from 'services/userService';
 import FormHelper from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
+import isEqualObj from 'utils/isEqual';
 import { checkValidators } from 'utils/validators/checkValidators';
 import { passwordValidators } from 'utils/validators/validators';
 
@@ -28,14 +31,13 @@ export default class PasswordForm extends Block<ComponentProps> {
 
         this.setProps({
             onChangeHandler: this.onChangeHandler.bind(this),
-            oldPassword: {
-                validator: FormHelper.validate(passwordValidators()),
+            validators: {
+                oldPassword: FormHelper.validate(passwordValidators()),
+                newPassword: FormHelper.validate(passwordValidators()),
+                newPasswordAgain: FormHelper.validate(passwordValidators()),
             },
-            newPassword: {
-                validator: FormHelper.validate(passwordValidators()),
-            },
-            newPasswordAgain: {
-                validator: FormHelper.validate(passwordValidators()),
+            events: {
+                submit: this.onSubmitHandler.bind(this),
             },
         });
     }
@@ -51,6 +53,20 @@ export default class PasswordForm extends Block<ComponentProps> {
     }
 
     onChangeHandler(e: DOMEvent<HTMLInputElement>) {
+        const formValues = getFormValues(this.getForm());
+        if (this.props.validators) {
+            const errors = checkValidators(formValues, this.props.validators);
+            if (Object.values(errors).some(value => value !== undefined)) {
+                this.onDisabledButton(true);
+            } else {
+                this.onDisabledButton(false);
+            }
+        } else {
+            this.onDisabledButton(true);
+        }
+    }
+
+    onSubmitHandler(e: SubmitEvent) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -68,7 +84,11 @@ export default class PasswordForm extends Block<ComponentProps> {
             }
         }
 
-        console.log(formValues);
+        const { changePassword } = userService();
+
+        changePassword(formValues as TChangePasswordData).then(() => {
+            this.onDisabledButton(true);
+        });
     }
 
     render() {

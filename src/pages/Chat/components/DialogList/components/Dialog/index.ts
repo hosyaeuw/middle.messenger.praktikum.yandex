@@ -9,10 +9,13 @@ export type TDialogProps = {
     text: string;
     selected?: boolean;
     src: string;
+    onClick?: () => void;
 };
 
 type Props = TDialogProps & {
-    onClick?: () => void;
+    events?: {
+        click?: () => void;
+    };
 };
 
 export default class Dialog extends Block<Props> {
@@ -28,6 +31,12 @@ export default class Dialog extends Block<Props> {
             selected: false,
         };
 
+        if (props.onClick) {
+            if (!props.events) {
+                props.events = {};
+            }
+            props.events.click = props.onClick;
+        }
         super(Object.assign(defaultProps, props));
     }
 

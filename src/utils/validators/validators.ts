@@ -61,4 +61,12 @@ export const phoneValidators = () => [
     }),
 ];
 
+export const chatTitleValidators = () => [
+    new Range({
+        msg: messages.range,
+        min: 2,
+        max: 255,
+    }),
+];
+
 export const messageValidators = () => [new Require({ msg: messages.require })];

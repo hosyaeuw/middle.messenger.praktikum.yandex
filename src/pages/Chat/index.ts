@@ -1,26 +1,61 @@
+import store from 'store';
+import router from 'router';
 import { Block, registerComponent } from 'core';
+import chatService from 'services/chatService';
+import { TOpenChatStore } from 'store/chatStore';
 import { Opponent } from 'entities/user';
-import { DialogList, MessageList, NewMessageForm } from './components';
 import { TMessage } from 'entities/message';
 import { TDialog } from 'entities/dialog';
+import { DialogList, MessageList, NewMessageForm, NewChatButton, ChatMenu } from './components';
 
 import './styles.scss';
-
-import openChat from 'data/openChat';
-import chats from 'data/chats';
 
 registerComponent(DialogList);
 registerComponent(MessageList);
 registerComponent(NewMessageForm);
+registerComponent(NewChatButton);
+registerComponent(ChatMenu);
 
 type Props = {};
 
-type ComponentProps = Props & {
-    title: string;
+type TOpenChat = {
     srcAvatar: string;
     opponentFullName: string;
     messages: TMessage[];
+};
+
+type ComponentProps = Props & {
+    title: string;
     dialogs: TDialog[];
+    openChat: TOpenChat | null;
+};
+
+const generateOpenChat = (openChat: TOpenChatStore): TOpenChat | null => {
+    if (openChat) {
+        const opponent = new Opponent(openChat.opponent[0]);
+
+        return {
+            opponentFullName: opponent.fullName,
+            messages: openChat.messages,
+            srcAvatar: opponent.avatar,
+        };
+    }
+
+    return null;
+};
+
+const requestChat = (chatId: string | null) => {
+    if (!chatId) {
+        return;
+    }
+
+    const { getToken, connectMessages } = chatService();
+
+    getToken(+chatId).then(token => {
+        if (token) {
+            connectMessages(token, +chatId);
+        }
+    });
 };
 
 export default class Chat extends Block<ComponentProps> {
@@ -28,14 +63,40 @@ export default class Chat extends Block<ComponentProps> {
 
     constructor() {
         super();
+        const { id } = router.getParams();
+
+        const { dialogs, openChat } = chatService();
 
         this.setProps({
             title: 'Chats',
-            srcAvatar: new Opponent(openChat.opponent).user.avatar,
-            opponentFullName: new Opponent(openChat.opponent).fullName,
-            messages: openChat.messages,
-            dialogs: chats.dialogs,
+            dialogs,
+            openChat: generateOpenChat(openChat),
+            onSubmitHandler: this.onSubmitHandler,
         });
+
+        requestChat(id);
+    }
+
+    componentDidMount() {
+        store.subscribe(state => {
+            this.setProps({
+                dialogs: state.dialogs,
+            });
+        }, 'Chat');
+
+        store.subscribe(state => {
+            this.setProps({
+                openChat: generateOpenChat(state.openChat),
+            });
+        }, 'Messages');
+
+        const { fetchDialogs } = chatService();
+        fetchDialogs();
+    }
+
+    onSubmitHandler(values: any) {
+        const { sendMessage } = chatService();
+        sendMessage(values);
     }
 
     render() {
@@ -46,7 +107,7 @@ export default class Chat extends Block<ComponentProps> {
                         <div class='header'>
                             <h1 class='header-title'>{{title}}</h1>
                             <div class='header__button-wrapper'>
-                                {{{Button content='+ Create new chat'}}}
+                                {{{NewChatButton}}}
                             </div>
                         </div>
                         <div class='search'>
@@ -56,18 +117,25 @@ export default class Chat extends Block<ComponentProps> {
                         </div>
                         {{{DialogList dialogs=dialogs}}}
                     </div>
-                    <div class='chat-dialog'>
-                        <div class='header'>
-                            {{{Avatar size='l' src=srcAvatar}}}
-                            <div>
-                                <span class='name'>{{opponentFullName}}</span>
+                    {{#if openChat}}
+                        <div class='chat-dialog'>
+                            <div class='chat-dialog-header'>
+                                <div class='chat-dialog-header__info'>
+                                    {{{Avatar size='l' src=openChat.srcAvatar}}}
+                                    <div>
+                                        <span class='name'>{{openChat.opponentFullName}}</span>
+                                    </div>
+                                </div>
+                                <div class='chat-dialog-header__button-container'>
+                                    {{{ChatMenu}}}
+                                </div>
                             </div>
-                        </div>
-                        <div class='messages-block'>
-                            {{{MessageList messages=messages}}}
-                            {{{NewMessageForm}}}
-                        </div>
-                    </div>
+                            <div class='messages-block'>
+                                {{{MessageList messages=openChat.messages}}}
+                                {{{NewMessageForm onSubmit=onSubmitHandler}}}
+                            </div>
+                        </div>                        
+                    {{/if}}
                 </div>
             {{/MainLayout}}
         `;
