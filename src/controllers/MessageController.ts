@@ -65,7 +65,12 @@ class MessageController {
     }
 
     private _onMessage(response: MessageEvent) {
-        const data = JSON.parse(response.data);
+        let data;
+        try {
+            data = JSON.parse(response.data);
+        } catch {
+            data = [];
+        }
         if (Array.isArray(data)) {
             store.setState({
                 openChat: {

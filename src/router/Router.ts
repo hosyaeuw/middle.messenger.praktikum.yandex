@@ -139,13 +139,11 @@ class Router {
         const pathParts = path.split('/');
         pathParts.shift();
 
-        const pathParams: Array<string | boolean> = [];
-
-        pathParts.forEach(part => {
+        const pathParams: (string | boolean)[] = pathParts.map(part => {
             if (/:[A-Za-z0-9]/.test(part)) {
-                pathParams.push(part.replace(':', ''));
+                return part.replace(':', '');
             } else {
-                pathParams.push(false);
+                return false;
             }
         });
 

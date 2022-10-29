@@ -21,6 +21,21 @@ type Response<T> = {
     responseHeaders: Record<string, string>;
 };
 type OptionsWithoutMethod = Omit<Options, 'method'>;
+
+const parseHeaders = (xhr: XMLHttpRequest) => {
+    const responseHeaders: Record<string, string> = {};
+    xhr.getAllResponseHeaders()
+        .trim()
+        .split(/[\r\n]+/)
+        .forEach(line => {
+            const parts = line.split(': ');
+            const header = parts.shift() as string;
+            const value = parts.join(': ');
+            responseHeaders[header] = value;
+        });
+
+    return responseHeaders;
+};
 export default class HTTP {
     baseURL: string | undefined = undefined;
 
@@ -85,17 +100,7 @@ export default class HTTP {
 
                 let response = xhr.response;
 
-                // Parse response headers
-                const responseHeaders: Record<string, string> = {};
-                xhr.getAllResponseHeaders()
-                    .trim()
-                    .split(/[\r\n]+/)
-                    .forEach(line => {
-                        const parts = line.split(': ');
-                        const header = parts.shift() as string;
-                        const value = parts.join(': ');
-                        responseHeaders[header] = value;
-                    });
+                const responseHeaders: Record<string, string> = parseHeaders(xhr);
 
                 if (
                     response.length > 0 &&

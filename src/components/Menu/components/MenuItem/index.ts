@@ -33,14 +33,12 @@ export default class MenuItem extends Block<Props> {
 
     render() {
         return `
-            <a>
-                <li class='links__item {{#if active}}active{{/if}}'>
-                    {{#if icon}}
-                        <img src={{icon}} alt='{{title}}-icon' />
-                    {{/if}}
-                    <span>{{title}}</span>
-                </li>
-            </a>
+            <li class='links__item {{#if active}}active{{/if}}'>
+                {{#if icon}}
+                    <img src={{icon}} alt='{{title}}-icon' />
+                {{/if}}
+                <span>{{title}}</span>
+            </li>
         `;
     }
 }

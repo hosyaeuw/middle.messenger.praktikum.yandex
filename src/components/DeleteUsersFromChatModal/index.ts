@@ -36,8 +36,8 @@ export default class DeleteUsersFromChatModal extends Block<ComponentProps> {
             const { fetchUsersFromChat } = chatService();
             const { profile } = userService();
 
-            return fetchUsersFromChat(id).then(data => {
-                const chatUsers = data.filter(user => user.id !== profile.id);
+            return fetchUsersFromChat(id).then(users => {
+                const chatUsers = users.filter(user => user.id !== profile.id);
                 this.setProps({ chatUsers });
             });
         }

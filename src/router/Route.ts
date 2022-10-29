@@ -2,10 +2,6 @@ import { Block } from 'core';
 
 import { defaultRootHTMLBlockId } from './Router';
 
-function isEqual(lhs: string, rhs: string) {
-    return lhs === rhs;
-}
-
 function render(query: string, block: Block) {
     const root = document.querySelector(query);
     if (root) {
@@ -44,7 +40,7 @@ class Route {
     }
 
     match(pathname: string) {
-        return isEqual(pathname, this.pathname);
+        return pathname === this.pathname;
     }
 
     render(force: boolean = false) {
