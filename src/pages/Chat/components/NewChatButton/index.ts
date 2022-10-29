@@ -1,8 +1,8 @@
 import { CreateDialogData } from 'controllers/ChatController';
 import { SearchUserData } from 'controllers/UserController';
 import { Block, registerComponent } from 'core';
-import router, { Path } from 'router';
-import chatService from 'services/chatService';
+import { router, Path } from 'router';
+import { chatService } from 'services/chatService';
 import NewChatModal from '../NewChatModal';
 
 registerComponent(NewChatModal);
@@ -72,7 +72,7 @@ export default class NewChatButton extends Block<ComponentProps> {
         const { searchAndAddUsers } = chatService();
 
         searchAndAddUsers(values, this.props.chatId).then(() => {
-            this.onCloseAddUsersModal()
+            this.onCloseAddUsersModal();
             router.go(`${Path.messenger}/${this.props.chatId}`);
         });
     }

@@ -1,6 +1,6 @@
-import isObject from './isObject';
+import { isObject } from './isObject';
 
-function deepClone(obj: anyObj): anyObj {
+export function deepClone(obj: anyObj): anyObj {
     const clone: anyObj = { ...obj };
     Object.keys(clone).forEach(
         key => (clone[key] = isObject(obj[key]) ? deepClone(obj[key] as anyObj) : obj[key]),
@@ -8,5 +8,3 @@ function deepClone(obj: anyObj): anyObj {
 
     return clone;
 }
-
-export default deepClone;

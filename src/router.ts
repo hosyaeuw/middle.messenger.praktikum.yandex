@@ -1,4 +1,4 @@
-import Router from 'router/Router';
+import { Router } from 'router/Router';
 
 export enum Path {
     home = '/',
@@ -11,6 +11,4 @@ export enum Path {
     another = '/404',
 }
 
-const router = new Router('#app');
-
-export default router;
+export const router = new Router('#app');

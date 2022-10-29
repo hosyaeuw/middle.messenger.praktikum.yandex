@@ -2,11 +2,11 @@ import { LoginData } from 'controllers/AuthController';
 import { Block } from 'core';
 import { Path } from 'router';
 import userService from 'services/userService';
-import convertingDataToSend from 'utils/convertingDataToSend';
-import FormHelper from 'utils/FormHelper';
+import { convertingDataToSend } from 'utils/convertingDataToSend';
+import { FormHelper } from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
-import { Require } from 'utils/validators';
 import { checkValidators } from 'utils/validators/checkValidators';
+import { Require } from 'utils/validators/Require';
 import { loginValidators, messages, passwordValidators } from 'utils/validators/validators';
 
 type Props = {};

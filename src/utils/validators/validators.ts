@@ -1,4 +1,10 @@
-import { Phone, Email, Password, Range, Require, Login, Name } from './';
+import { Email } from "./Email";
+import { Login } from "./Login";
+import { Name } from "./Name";
+import { Password } from "./Password";
+import { Phone } from "./Phone";
+import { Range } from "./Range";
+import { Require } from "./Require";
 
 export const messages = {
     email: 'Incorrect email',

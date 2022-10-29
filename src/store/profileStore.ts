@@ -1,7 +1,7 @@
 import { IProfile } from 'entities/user';
 
 import profile from 'data/profile';
-import NetworkStatus from 'utils/enums/NetworkStatus';
+import { NetworkStatus } from 'utils/enums/NetworkStatus';
 
 type ChatStore = {
     profile: IProfile | null;

@@ -1,5 +1,5 @@
 import { Block } from 'core';
-import router from 'router';
+import { router } from 'router';
 
 export type Props = {
     link: string;

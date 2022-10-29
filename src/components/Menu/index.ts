@@ -3,7 +3,7 @@ import { IProfile, Profile } from 'entities/user';
 import { MenuItem, UpdateAvatarModal } from './components';
 import { Props as PropsMenuItem } from './components/MenuItem';
 import userService from 'services/userService';
-import store from 'store';
+import { store } from 'store';
 
 import './styles.scss';
 

@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import { Profile } from 'entities/user';
-import router from 'router';
-import chatService from 'services/chatService';
+import { router } from 'router';
+import { chatService } from 'services/chatService';
 
 import './styles.scss';
 

@@ -1,9 +1,9 @@
-import { inputTypes } from 'components/Input';
+import { InputTypes } from 'components/Input';
 import { Block } from 'core';
 import './styles.scss';
 
 type Props = {
-    type?: inputTypes;
+    type?: InputTypes;
     label?: string;
     placeholder?: string;
     defaultValue?: string;

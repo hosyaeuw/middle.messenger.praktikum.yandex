@@ -1,6 +1,6 @@
-import deepClone from 'utils/deepClone';
-import deepMerge from 'utils/deepMerge';
-import isEqualObj from 'utils/isEqual';
+import { deepClone } from 'utils/deepClone';
+import { deepMerge } from 'utils/deepMerge';
+import { isEqualObj } from 'utils/isEqual';
 import EventBus from './EventBus';
 
 type State = Record<string, any>;

@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import { isObject } from './isObject';
 
 function mergeValues(a: unknown, b: unknown) {
     if (isObject(a) && isObject(b)) {
@@ -8,7 +8,7 @@ function mergeValues(a: unknown, b: unknown) {
     return a ?? b;
 }
 
-function deepMerge(source: anyObj, target: anyObj): anyObj {
+export function deepMerge(source: anyObj, target: anyObj): anyObj {
     const result: anyObj = {};
     const objectKeys = new Set();
     Object.keys(source).forEach(objectKeys.add, objectKeys);
@@ -21,5 +21,3 @@ function deepMerge(source: anyObj, target: anyObj): anyObj {
 
     return result;
 }
-
-export default deepMerge;

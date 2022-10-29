@@ -1,4 +1,4 @@
-import queryStringify from './queryStringify';
+import { queryStringify } from './queryStringify';
 
 enum Method {
     GET = 'GET',
@@ -81,7 +81,7 @@ export default class HTTP {
                     'Content-Type': 'application/json',
                 };
             }
-            let xhrTimeout: number | undefined;
+            let xhrTimeout: NodeJS.Timeout | undefined;
             const xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
 

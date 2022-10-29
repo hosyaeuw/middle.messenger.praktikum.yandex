@@ -1,7 +1,7 @@
-import api, { BASE_WS_URL } from 'httpClient/api';
-import store from 'store';
-import WSEvents from 'utils/enums/WSEvents';
-import URLHelper from 'utils/URLHelper';
+import { api, BASE_WS_URL } from 'httpClient/api';
+import { store } from 'store';
+import { WSEvents } from 'utils/enums/WSEvents';
+import { URLHelper } from 'utils/URLHelper';
 
 const ABNORMAL_CLOSURE = 1006;
 
@@ -156,4 +156,4 @@ class MessageController {
     }
 }
 
-export default new MessageController();
+export const messageController = new MessageController();

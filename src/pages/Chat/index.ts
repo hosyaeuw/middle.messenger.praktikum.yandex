@@ -1,7 +1,7 @@
-import store from 'store';
-import router from 'router';
+import { store } from 'store';
+import { router } from 'router';
 import { Block, registerComponent } from 'core';
-import chatService from 'services/chatService';
+import { chatService } from 'services/chatService';
 import { OpenChatStore } from 'store/chatStore';
 import { Opponent } from 'entities/user';
 import { MessageType } from 'entities/message';

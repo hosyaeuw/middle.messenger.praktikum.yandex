@@ -8,7 +8,7 @@ export interface IFormatter {
     parse: (value: string) => string;
 }
 
-export default class FormHelper {
+export class FormHelper {
     static validate(validators: Validator[] = []) {
         return (value: string): string | undefined => {
             let error: string | undefined;

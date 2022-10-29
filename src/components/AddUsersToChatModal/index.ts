@@ -1,9 +1,9 @@
 import { SearchUserData } from 'controllers/UserController';
 import { Block } from 'core';
-import FormHelper from 'utils/FormHelper';
+import { FormHelper } from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
-import { Require } from 'utils/validators';
 import { checkValidators } from 'utils/validators/checkValidators';
+import { Require } from 'utils/validators/Require';
 import { loginValidators, messages } from 'utils/validators/validators';
 
 type Props = {

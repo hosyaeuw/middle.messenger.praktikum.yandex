@@ -1,50 +1,51 @@
-import AuthController, { LoginData, RegData } from 'controllers/AuthController';
-import UserController, {
+import { authController, LoginData, RegData } from 'controllers/AuthController';
+import {
     ChangePasswordData,
     ChangeProfileData,
     SearchUserData,
+    userController,
 } from 'controllers/UserController';
+import { Path, router } from 'router';
 
-import router, { Path } from 'router';
-import store from 'store';
+import { store } from 'store';
 
-const userService = () => {
+export const userService = () => {
     const { profile } = store.getState();
 
     const searchUserByLogin = (data: SearchUserData) => {
-        return UserController.searchUserByLogin(data).then(response => {
+        return userController.searchUserByLogin(data).then(response => {
             return response.response;
         });
     };
 
     const login = (data: LoginData) => {
-        AuthController.signIn(data).then(() => {
+        authController.signIn(data).then(() => {
             router.go(Path.messenger);
         });
     };
 
     const registration = (data: RegData) => {
-        AuthController.signUp(data).then(() => {
+        authController.signUp(data).then(() => {
             router.go(Path.login);
         });
     };
 
     const logout = () => {
-        AuthController.signOut().then(() => {
+        authController.signOut().then(() => {
             router.go(Path.login);
         });
     };
 
     const uploadAvatar = (data: FormData) => {
-        return UserController.uploadAvatar(data);
+        return userController.uploadAvatar(data);
     };
 
     const changePassword = (data: ChangePasswordData) => {
-        return UserController.changePassword(data);
+        return userController.changePassword(data);
     };
 
     const changeProfile = (data: ChangeProfileData) => {
-        return UserController.changeProfile(data);
+        return userController.changeProfile(data);
     };
 
     return {

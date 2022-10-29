@@ -37,10 +37,8 @@ const userAPI = {
     password: '/password/',
 };
 
-const api = {
+export const api = {
     auth: authAPI,
     chat: chatAPI,
     user: userAPI,
 };
-
-export default api;

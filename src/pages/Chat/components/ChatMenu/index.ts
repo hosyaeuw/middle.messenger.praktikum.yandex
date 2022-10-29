@@ -1,7 +1,7 @@
 import { SearchUserData } from 'controllers/UserController';
 import { Block, registerComponent } from 'core';
-import router from 'router';
-import chatService from 'services/chatService';
+import { router } from 'router';
+import { chatService } from 'services/chatService';
 import ChatMenuItem from './ChatMenuItem';
 
 import './styles.scss';

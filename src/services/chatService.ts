@@ -1,14 +1,15 @@
-import ChatController, {
+import {
     UsersToChatData,
     CreateDialogData,
     FetchDialogsData,
+    chatController,
 } from 'controllers/ChatController';
-import MessageController, { MessageData } from 'controllers/MessageController';
+import { messageController, MessageData } from 'controllers/MessageController';
 import { SearchUserData } from 'controllers/UserController';
 import { DialogType } from 'entities/dialog';
 import { Profile } from 'entities/user';
-import store from 'store';
-import NetworkStatus from 'utils/enums/NetworkStatus';
+import { store } from 'store';
+import { NetworkStatus } from 'utils/enums/NetworkStatus';
 import userService from './userService';
 
 const setDialogs = (items: DialogType[]) => {
@@ -23,30 +24,30 @@ const changeStatus = (networkStatus: NetworkStatus) => {
     });
 };
 
-const chatService = () => {
+export const chatService = () => {
     const { searchUserByLogin } = userService();
     const { dialogs, openChat, dialogsNetworkStatus } = store.getState();
 
     const addUsersToChat = (data: UsersToChatData) => {
-        return ChatController.addUsersToChat(data);
+        return chatController.addUsersToChat(data);
     };
 
     const fetchDialogs = (data?: FetchDialogsData) => {
         changeStatus(NetworkStatus.loading);
-        ChatController.fetchDialogs(data).then(data => {
+        chatController.fetchDialogs(data).then(data => {
             setDialogs(data.response);
             changeStatus(NetworkStatus.ready);
         });
     };
 
     const createDialog = (data: CreateDialogData) => {
-        return ChatController.createDialog(data).then(response => {
+        return chatController.createDialog(data).then(response => {
             return response.response;
         });
     };
 
     const getToken = (chatId: number) => {
-        return ChatController.getToken(chatId).then(response => {
+        return chatController.getToken(chatId).then(response => {
             return response.response.token;
         });
     };
@@ -62,13 +63,13 @@ const chatService = () => {
     };
 
     const deleteUsersFromChat = (data: UsersToChatData) => {
-        return ChatController.deleteUsersFromChat(data);
+        return chatController.deleteUsersFromChat(data);
     };
 
     const connectMessages = (token: string, chatId: number) => {
         const userId = store.getState().profile.id;
 
-        MessageController.connect({
+        messageController.connect({
             userId,
             chatId,
             token,
@@ -76,11 +77,11 @@ const chatService = () => {
     };
 
     const sendMessage = (data: MessageData) => {
-        MessageController.sendMessage(data);
+        messageController.sendMessage(data);
     };
 
     const fetchUsersFromChat = (chatId: string | number) => {
-        return ChatController.getChatUsers(chatId).then(response => {
+        return chatController.getChatUsers(chatId).then(response => {
             return response.response.map(user => new Profile(user));
         });
     };
@@ -100,5 +101,3 @@ const chatService = () => {
         fetchUsersFromChat,
     };
 };
-
-export default chatService;

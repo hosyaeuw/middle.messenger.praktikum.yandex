@@ -1,11 +1,10 @@
-import router, { Path } from 'router';
+import { router, Path } from 'router';
 import { Block, registerComponent } from 'core';
 import { DialogType, Dialog as DialogEntity } from 'entities/dialog';
 import { Dialog, DialogListEmpty } from './components';
 import { DialogTypeProps } from './components/Dialog';
 
 import './styles.scss';
-
 
 registerComponent(Dialog);
 registerComponent(DialogListEmpty);

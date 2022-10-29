@@ -14,8 +14,8 @@ import {
 } from 'components';
 import { MainLayout, FormLayout } from 'layouts';
 import { registerComponent } from 'core';
-import AuthController from 'controllers/AuthController';
-import router, { Path } from 'router';
+import { router, Path } from 'router';
+import { authController } from 'controllers/AuthController';
 
 registerComponent(MainLayout);
 registerComponent(Button);
@@ -34,7 +34,7 @@ registerComponent(ErrorPage);
 router
     .setPublicRedirect(Path.messenger)
     .setProtectedRedirect(Path.login)
-    .onRoute(AuthController.checkAuth)
+    .onRoute(authController.checkAuth)
     .register(Path.home, Auth)
     .register(Path.login, Auth)
     .register(Path.registration, Reg)

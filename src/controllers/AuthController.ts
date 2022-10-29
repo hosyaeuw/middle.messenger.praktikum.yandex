@@ -1,6 +1,6 @@
-import api from 'httpClient/api';
-import store from 'store';
-import httpClient from '../httpClient';
+import { api } from 'httpClient/api';
+import { store } from 'store';
+import { httpClient } from '../httpClient';
 
 export type LoginData = {
     login: 'string';
@@ -47,4 +47,4 @@ class AuthController {
     }
 }
 
-export default new AuthController();
+export const authController = new AuthController();

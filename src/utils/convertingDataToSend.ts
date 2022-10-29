@@ -1,7 +1,7 @@
-import camelToSnakeCase from './camelToSnakeCase';
-import isObject from './isObject';
+import { camelToSnakeCase } from './camelToSnakeCase';
+import { isObject } from './isObject';
 
-const convertingDataToSend = (data: unknown) => {
+export const convertingDataToSend = (data: unknown) => {
     if (isObject(data)) {
         const typedData = data as anyObj;
         const result: anyObj = {};
@@ -14,5 +14,3 @@ const convertingDataToSend = (data: unknown) => {
 
     return data;
 };
-
-export default convertingDataToSend;

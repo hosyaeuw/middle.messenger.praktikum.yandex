@@ -3,10 +3,9 @@ import { Profile } from 'entities/user';
 import userService from 'services/userService';
 
 import { checkValidators } from 'utils/validators/checkValidators';
-import { Require } from 'utils/validators';
-import FormHelper from 'utils/FormHelper';
+import { FormHelper } from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
-import isEqualObj from 'utils/isEqual';
+import { isEqualObj } from 'utils/isEqual';
 import {
     displayNameValidators,
     emailValidators,
@@ -16,8 +15,9 @@ import {
     phoneValidators,
 } from 'utils/validators/validators';
 import { ChangeProfileData } from 'controllers/UserController';
-import store from 'store';
-import convertingDataToSend from 'utils/convertingDataToSend';
+import { store } from 'store';
+import { convertingDataToSend } from 'utils/convertingDataToSend';
+import { Require } from 'utils/validators/Require';
 
 type Props = {
     events?: {

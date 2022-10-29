@@ -1,4 +1,4 @@
-export default function quickSort(arr: number[]): number[] {
+export function quickSort(arr: number[]): number[] {
     if (arr.length < 2) {
         return arr;
     }

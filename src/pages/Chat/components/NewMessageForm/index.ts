@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import { getFormValues } from 'utils/getFormValues';
 import { checkValidators } from 'utils/validators/checkValidators';
-import FormHelper from 'utils/FormHelper';
+import { FormHelper } from 'utils/FormHelper';
 import { messageValidators } from 'utils/validators/validators';
 
 import './styles.scss';
@@ -53,7 +53,7 @@ export default class NewMessageForm extends Block<ComponentProps> {
             }
         }
 
-        this.props.onSubmit && this.props.onSubmit(formValues)
+        this.props.onSubmit && this.props.onSubmit(formValues);
     }
 
     render() {

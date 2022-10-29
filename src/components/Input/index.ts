@@ -1,9 +1,9 @@
 import { Block } from 'core';
 
-export type inputTypes = 'text' | 'number' | 'password' | 'email';
+export type InputTypes = 'text' | 'number' | 'password' | 'email';
 
 type Props = {
-    type?: inputTypes;
+    type?: InputTypes;
     placeholder?: string;
     defaultValue?: string;
     name?: string;

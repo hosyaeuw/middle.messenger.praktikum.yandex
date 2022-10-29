@@ -1,9 +1,8 @@
 import { ChangePasswordData } from 'controllers/UserController';
 import { Block } from 'core';
 import userService from 'services/userService';
-import FormHelper from 'utils/FormHelper';
+import { FormHelper } from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
-import isEqualObj from 'utils/isEqual';
 import { checkValidators } from 'utils/validators/checkValidators';
 import { passwordValidators } from 'utils/validators/validators';
 

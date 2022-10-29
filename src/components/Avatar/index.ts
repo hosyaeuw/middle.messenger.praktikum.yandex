@@ -1,11 +1,11 @@
 import { Block } from 'core';
 import './styles.scss';
 
-type sizes = 'm' | 'l' | 'xl' | 'xxl';
+type Sizes = 'm' | 'l' | 'xl' | 'xxl';
 
 type Props = {
     src: string;
-    size?: sizes;
+    size?: Sizes;
 };
 
 export default class Avatar extends Block<Props> {

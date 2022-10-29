@@ -11,7 +11,7 @@ function render(query: string, block: Block) {
     return false;
 }
 
-class Route {
+export class Route {
     public pathname: string;
 
     private _blockClass: typeof Block;
@@ -53,5 +53,3 @@ class Route {
         return this.pathname;
     }
 }
-
-export default Route;

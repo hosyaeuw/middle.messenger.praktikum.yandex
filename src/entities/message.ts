@@ -3,7 +3,7 @@ import { IUser } from './user';
 
 import openChat from 'data/openChat';
 import profile from 'data/profile';
-import store from 'store';
+import { store } from 'store';
 
 export type LastMessage = {
     user?: IUser;

@@ -1,6 +1,6 @@
-import mergeSort from './mergeSort';
+import { mergeSort } from './mergeSort';
 
-export default function isEqualObj(obj: anyObj, another: anyObj) {
+export function isEqualObj(obj: anyObj, another: anyObj) {
     if (!obj || !another) {
         throw Error('no objs');
     }

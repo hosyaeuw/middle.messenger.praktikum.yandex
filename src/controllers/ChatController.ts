@@ -1,8 +1,8 @@
 import { DialogType } from 'entities/dialog';
 import { IProfile } from 'entities/user';
-import api from 'httpClient/api';
-import URLHelper from 'utils/URLHelper';
-import httpClient from '../httpClient';
+import { api } from 'httpClient/api';
+import { URLHelper } from 'utils/URLHelper';
+import { httpClient } from '../httpClient';
 
 export type CreateDialogData = {
     title: string;
@@ -65,4 +65,4 @@ class ChatController {
     }
 }
 
-export default new ChatController();
+export const chatController = new ChatController();

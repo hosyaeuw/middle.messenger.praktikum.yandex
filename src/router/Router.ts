@@ -1,5 +1,5 @@
 import { Block } from 'core';
-import Route from './Route';
+import { Route } from './Route';
 
 export const defaultRootHTMLBlockId = '#app';
 
@@ -10,7 +10,7 @@ export enum TAccess {
     'protected',
 }
 
-class Router {
+export class Router {
     public routes: Route[] = [];
     public history: History = window.history;
     private _currentRoute: Route | null | undefined = null;
@@ -175,5 +175,3 @@ class Router {
         return this._currentRoute;
     }
 }
-
-export default Router;

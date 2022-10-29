@@ -1,6 +1,6 @@
 import { IProfile } from 'entities/user';
-import api from 'httpClient/api';
-import httpClient from '../httpClient';
+import { api } from 'httpClient/api';
+import { httpClient } from '../httpClient';
 
 export type SearchUserData = {
     login: string;
@@ -50,4 +50,4 @@ class UserController {
     }
 }
 
-export default new UserController();
+export const userController = new UserController();

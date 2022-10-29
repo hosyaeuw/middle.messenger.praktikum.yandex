@@ -1,4 +1,4 @@
-export default function queryStringify(data: Record<string, unknown>) {
+export function queryStringify(data: Record<string, unknown>) {
     if (typeof data !== 'object') {
         throw new Error('Data should be an object');
     }
