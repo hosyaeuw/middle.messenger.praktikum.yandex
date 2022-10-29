@@ -2,10 +2,10 @@ import store from 'store';
 import router from 'router';
 import { Block, registerComponent } from 'core';
 import chatService from 'services/chatService';
-import { TOpenChatStore } from 'store/chatStore';
+import { OpenChatStore } from 'store/chatStore';
 import { Opponent } from 'entities/user';
-import { TMessage } from 'entities/message';
-import { TDialog } from 'entities/dialog';
+import { MessageType } from 'entities/message';
+import { DialogType } from 'entities/dialog';
 import { DialogList, MessageList, NewMessageForm, NewChatButton, ChatMenu } from './components';
 
 import './styles.scss';
@@ -18,19 +18,19 @@ registerComponent(ChatMenu);
 
 type Props = {};
 
-type TOpenChat = {
+type OpenChat = {
     srcAvatar: string;
     opponentFullName: string;
-    messages: TMessage[];
+    messages: MessageType[];
 };
 
 type ComponentProps = Props & {
     title: string;
-    dialogs: TDialog[];
-    openChat: TOpenChat | null;
+    dialogs: DialogType[];
+    openChat: OpenChat | null;
 };
 
-const generateOpenChat = (openChat: TOpenChatStore): TOpenChat | null => {
+const generateOpenChat = (openChat: OpenChatStore): OpenChat | null => {
     if (openChat) {
         const opponent = new Opponent(openChat.opponent[0]);
 

@@ -1,20 +1,20 @@
 import { BASE_MEDIA_URL } from 'httpClient/api';
 import { DateHelper } from 'utils/DateHelper';
-import { TLastMessage } from './message';
+import { LastMessage } from './message';
 
-export type TDialog = {
+export type DialogType = {
     id: number;
     title: string;
     avatar: string | null;
     created_by: number;
     unread_count: number;
-    last_message: TLastMessage;
+    last_message: LastMessage;
 };
 
 export class Dialog {
     dialog;
 
-    constructor(dialog: TDialog) {
+    constructor(dialog: DialogType) {
         this.dialog = dialog;
     }
 

@@ -1,8 +1,8 @@
-import AuthController, { TLoginData, TRegData } from 'controllers/AuthController';
+import AuthController, { LoginData, RegData } from 'controllers/AuthController';
 import UserController, {
-    TChangePasswordData,
-    TChangeProfileData,
-    TSearchUserData,
+    ChangePasswordData,
+    ChangeProfileData,
+    SearchUserData,
 } from 'controllers/UserController';
 
 import router, { Path } from 'router';
@@ -11,19 +11,19 @@ import store from 'store';
 const userService = () => {
     const { profile } = store.getState();
 
-    const searchUserByLogin = (data: TSearchUserData) => {
+    const searchUserByLogin = (data: SearchUserData) => {
         return UserController.searchUserByLogin(data).then(response => {
             return response.response;
         });
     };
 
-    const login = (data: TLoginData) => {
+    const login = (data: LoginData) => {
         AuthController.signIn(data).then(() => {
             router.go(Path.messenger);
         });
     };
 
-    const registration = (data: TRegData) => {
+    const registration = (data: RegData) => {
         AuthController.signUp(data).then(() => {
             router.go(Path.login);
         });
@@ -39,11 +39,11 @@ const userService = () => {
         return UserController.uploadAvatar(data);
     };
 
-    const changePassword = (data: TChangePasswordData) => {
+    const changePassword = (data: ChangePasswordData) => {
         return UserController.changePassword(data);
     };
 
-    const changeProfile = (data: TChangeProfileData) => {
+    const changeProfile = (data: ChangeProfileData) => {
         return UserController.changeProfile(data);
     };
 

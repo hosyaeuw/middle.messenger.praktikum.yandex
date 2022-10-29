@@ -1,4 +1,4 @@
-import { TSearchUserData } from 'controllers/UserController';
+import { SearchUserData } from 'controllers/UserController';
 import { Block } from 'core';
 import FormHelper from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
@@ -8,7 +8,7 @@ import { loginValidators, messages } from 'utils/validators/validators';
 
 type Props = {
     onClose?: () => void;
-    onSubmit?: (values: TSearchUserData) => void;
+    onSubmit?: (values: SearchUserData) => void;
 };
 
 type ComponentProps = Props & {
@@ -62,7 +62,7 @@ export default class AddUsersToChatModal extends Block<ComponentProps> {
             }
         }
 
-        this.props.onSubmit && this.props.onSubmit(formValues as TSearchUserData);
+        this.props.onSubmit && this.props.onSubmit(formValues as SearchUserData);
     }
 
     render() {

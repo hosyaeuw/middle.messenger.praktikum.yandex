@@ -3,14 +3,14 @@ import deepMerge from 'utils/deepMerge';
 import isEqualObj from 'utils/isEqual';
 import EventBus from './EventBus';
 
-type TState = Record<string, any>;
+type State = Record<string, any>;
 
 class Store {
-    private _state: TState;
+    private _state: State;
 
-    private _oldState: TState;
+    private _oldState: State;
 
-    public _subscribers: Map<string, (state: TState) => void>;
+    public _subscribers: Map<string, (state: State) => void>;
 
     private eventBus: () => EventBus;
 
@@ -21,7 +21,7 @@ class Store {
         USE: 'store:use',
     };
 
-    constructor(initialState: TState = {}) {
+    constructor(initialState: State = {}) {
         const eventBus = new EventBus();
         this._state = this._makeStateProxy(initialState);
         this._oldState = { ...this._state };
@@ -46,14 +46,14 @@ class Store {
 
     public storeDidMount() {}
 
-    private _storeDidUpdate(oldState: TState, newState: TState) {
+    private _storeDidUpdate(oldState: State, newState: State) {
         const response = this.storeDidUpdate(oldState, newState);
         if (response) {
             this.eventBus().emit(Store.EVENTS.USE);
         }
     }
 
-    public storeDidUpdate(oldState: TState = {}, newState: TState = {}) {
+    public storeDidUpdate(oldState: State = {}, newState: State = {}) {
         return !isEqualObj(oldState, newState);
     }
 
@@ -63,14 +63,14 @@ class Store {
         });
     }
 
-    public subscribe(subscriber: (state: TState) => void, tag: string) {
+    public subscribe(subscriber: (state: State) => void, tag: string) {
         if (!this._subscribers.has(tag)) {
             this._subscribers.set(tag, subscriber);
             subscriber(this._state);
         }
     }
 
-    public setState(newState: TState) {
+    public setState(newState: State) {
         if (newState === undefined) {
             return;
         }
@@ -83,10 +83,10 @@ class Store {
         return this._state;
     }
 
-    private _makeStateProxy(state: TState) {
+    private _makeStateProxy(state: State) {
         const self = this;
         return new Proxy(state, {
-            set: (target: TState, item: string, value: unknown) => {
+            set: (target: State, item: string, value: unknown) => {
                 const t = target;
                 t[item] = value;
                 this.eventBus().emit(Store.EVENTS.STORE_DU, self._oldState, t);

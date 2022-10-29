@@ -1,4 +1,4 @@
-import { TLoginData } from 'controllers/AuthController';
+import { LoginData } from 'controllers/AuthController';
 import { Block } from 'core';
 import { Path } from 'router';
 import userService from 'services/userService';
@@ -59,7 +59,7 @@ export default class Auth extends Block<ComponentProps> {
 
         const { login } = userService();
 
-        login(convertingDataToSend(formValues) as TLoginData);
+        login(convertingDataToSend(formValues) as LoginData);
     }
 
     render() {

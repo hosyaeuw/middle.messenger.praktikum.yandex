@@ -1,4 +1,4 @@
-import { TDialog } from 'entities/dialog';
+import { DialogType } from 'entities/dialog';
 import { IProfile } from 'entities/user';
 import api from 'httpClient/api';
 import URLHelper from 'utils/URLHelper';
@@ -14,7 +14,7 @@ export type FetchDialogsData = {
     title?: string;
 };
 
-export type TUsersToChatData = {
+export type UsersToChatData = {
     users: number[];
     chatId: number;
 };
@@ -34,12 +34,12 @@ class ChatController {
         });
     }
 
-    public async addUsersToChat(data: TUsersToChatData) {
+    public async addUsersToChat(data: UsersToChatData) {
         return httpClient.put(`${api.chat.domain}${api.chat.addUsersToChat}`, { data });
     }
 
     public async fetchDialogs(data?: FetchDialogsData) {
-        return httpClient.get<TDialog[]>(`${api.chat.domain}${api.chat.getDialogs}`, {
+        return httpClient.get<DialogType[]>(`${api.chat.domain}${api.chat.getDialogs}`, {
             data,
         });
     }
@@ -60,7 +60,7 @@ class ChatController {
         );
     }
 
-    public async deleteUsersFromChat(data: TUsersToChatData) {
+    public async deleteUsersFromChat(data: UsersToChatData) {
         return httpClient.delete(`${api.chat.domain}${api.chat.deleteUsersFromChat}`, { data });
     }
 }

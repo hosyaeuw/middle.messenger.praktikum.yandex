@@ -1,17 +1,17 @@
 import ChatController, {
-    TUsersToChatData,
+    UsersToChatData,
     CreateDialogData,
     FetchDialogsData,
 } from 'controllers/ChatController';
-import MessageController, { TMessageData } from 'controllers/MessageController';
-import { TSearchUserData } from 'controllers/UserController';
-import { TDialog } from 'entities/dialog';
+import MessageController, { MessageData } from 'controllers/MessageController';
+import { SearchUserData } from 'controllers/UserController';
+import { DialogType } from 'entities/dialog';
 import { Profile } from 'entities/user';
 import store from 'store';
 import NetworkStatus from 'utils/enums/NetworkStatus';
 import userService from './userService';
 
-const setDialogs = (items: TDialog[]) => {
+const setDialogs = (items: DialogType[]) => {
     store.setState({
         dialogs: items,
     });
@@ -27,7 +27,7 @@ const chatService = () => {
     const { searchUserByLogin } = userService();
     const { dialogs, openChat, dialogsNetworkStatus } = store.getState();
 
-    const addUsersToChat = (data: TUsersToChatData) => {
+    const addUsersToChat = (data: UsersToChatData) => {
         return ChatController.addUsersToChat(data);
     };
 
@@ -51,9 +51,9 @@ const chatService = () => {
         });
     };
 
-    const searchAndAddUsers = (data: TSearchUserData, chatId: number) => {
+    const searchAndAddUsers = (data: SearchUserData, chatId: number) => {
         return searchUserByLogin(data).then(data => {
-            const usersData: TUsersToChatData = {
+            const usersData: UsersToChatData = {
                 chatId,
                 users: [data[0].id],
             };
@@ -61,7 +61,7 @@ const chatService = () => {
         });
     };
 
-    const deleteUsersFromChat = (data: TUsersToChatData) => {
+    const deleteUsersFromChat = (data: UsersToChatData) => {
         return ChatController.deleteUsersFromChat(data);
     };
 
@@ -75,7 +75,7 @@ const chatService = () => {
         });
     };
 
-    const sendMessage = (data: TMessageData) => {
+    const sendMessage = (data: MessageData) => {
         MessageController.sendMessage(data);
     };
 

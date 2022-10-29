@@ -1,5 +1,5 @@
 import { CreateDialogData } from 'controllers/ChatController';
-import { TSearchUserData } from 'controllers/UserController';
+import { SearchUserData } from 'controllers/UserController';
 import { Block, registerComponent } from 'core';
 import router, { Path } from 'router';
 import chatService from 'services/chatService';
@@ -68,7 +68,7 @@ export default class NewChatButton extends Block<ComponentProps> {
         });
     }
 
-    onAddUsersSubmit(values: TSearchUserData) {
+    onAddUsersSubmit(values: SearchUserData) {
         const { searchAndAddUsers } = chatService();
 
         searchAndAddUsers(values, this.props.chatId).then(() => {

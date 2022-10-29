@@ -1,4 +1,4 @@
-import { TRegData } from 'controllers/AuthController';
+import { RegData } from 'controllers/AuthController';
 import { Block } from 'core';
 import { Path } from 'router';
 import userService from 'services/userService';
@@ -83,7 +83,7 @@ export default class Auth extends Block<ComponentProps> {
 
         const { registration } = userService();
 
-        registration(convertingDataToSend(formValues) as TRegData);
+        registration(convertingDataToSend(formValues) as RegData);
     }
 
     render() {

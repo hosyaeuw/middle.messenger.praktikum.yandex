@@ -1,4 +1,4 @@
-import { TChangePasswordData } from 'controllers/UserController';
+import { ChangePasswordData } from 'controllers/UserController';
 import { Block } from 'core';
 import userService from 'services/userService';
 import FormHelper from 'utils/FormHelper';
@@ -86,7 +86,7 @@ export default class PasswordForm extends Block<ComponentProps> {
 
         const { changePassword } = userService();
 
-        changePassword(formValues as TChangePasswordData).then(() => {
+        changePassword(formValues as ChangePasswordData).then(() => {
             this.onDisabledButton(true);
         });
     }

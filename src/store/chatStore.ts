@@ -1,23 +1,23 @@
-import { TDialog } from 'entities/dialog';
-import { TMessage } from 'entities/message';
+import { DialogType } from 'entities/dialog';
+import { MessageType } from 'entities/message';
 import { IOpponent } from 'entities/user';
 
 import chats from 'data/chats';
 import openChat from 'data/openChat';
 import NetworkStatus from 'utils/enums/NetworkStatus';
 
-export type TOpenChatStore = {
+export type OpenChatStore = {
     opponent: IOpponent[];
-    messages: TMessage[];
+    messages: MessageType[];
 };
 
-type TChatStore = {
-    dialogs: TDialog[];
+type ChatStore = {
+    dialogs: DialogType[];
     dialogsNetworkStatus: NetworkStatus;
-    openChat: TOpenChatStore | null;
+    openChat: OpenChatStore | null;
 };
 
-export const chatInitialState: TChatStore = {
+export const chatInitialState: ChatStore = {
     dialogs: chats.dialogs,
     dialogsNetworkStatus: NetworkStatus.pending,
     openChat: openChat,

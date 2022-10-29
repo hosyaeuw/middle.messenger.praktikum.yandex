@@ -1,5 +1,5 @@
 import { Block, registerComponent } from 'core';
-import { TDialog } from 'entities/dialog';
+import { DialogType } from 'entities/dialog';
 import { MessageList, NewMessageForm, NewChatButton } from '../';
 
 import './styles.scss';
@@ -9,7 +9,7 @@ registerComponent(NewMessageForm);
 registerComponent(NewChatButton);
 
 type Props = {
-    openDialog: TDialog;
+    openDialog: DialogType;
 };
 
 type ComponentProps = Props & {};

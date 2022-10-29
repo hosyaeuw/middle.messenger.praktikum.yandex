@@ -2,16 +2,16 @@ import { IProfile } from 'entities/user';
 import api from 'httpClient/api';
 import httpClient from '../httpClient';
 
-export type TSearchUserData = {
+export type SearchUserData = {
     login: string;
 };
 
-export type TChangePasswordData = {
+export type ChangePasswordData = {
     oldPassword: string;
     newPassword: string;
 };
 
-export type TChangeProfileData = {
+export type ChangeProfileData = {
     first_name: string;
     second_name: string;
     display_name: string;
@@ -31,19 +31,19 @@ class UserController {
         });
     }
 
-    public async searchUserByLogin(data: TSearchUserData) {
+    public async searchUserByLogin(data: SearchUserData) {
         return httpClient.post<IProfile[]>(`${api.user.domain}${api.user.search}`, {
             data,
         });
     }
 
-    public async changePassword(data: TChangePasswordData) {
+    public async changePassword(data: ChangePasswordData) {
         return httpClient.put(`${api.user.domain}${api.user.password}`, {
             data,
         });
     }
 
-    public async changeProfile(data: TChangeProfileData) {
+    public async changeProfile(data: ChangeProfileData) {
         return httpClient.put(`${api.user.domain}${api.user.profile}`, {
             data,
         });

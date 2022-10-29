@@ -5,13 +5,13 @@ import openChat from 'data/openChat';
 import profile from 'data/profile';
 import store from 'store';
 
-export type TLastMessage = {
+export type LastMessage = {
     user?: IUser;
     time: string;
     content: string;
 };
 
-export type TMessage = {
+export type MessageType = {
     content: string;
     time: string;
     id: number;
@@ -23,7 +23,7 @@ export type TMessage = {
 export class Message {
     message;
 
-    constructor(message: TMessage) {
+    constructor(message: MessageType) {
         this.message = message;
     }
 

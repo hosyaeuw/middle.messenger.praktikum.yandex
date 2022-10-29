@@ -1,4 +1,4 @@
-import { TSearchUserData } from 'controllers/UserController';
+import { SearchUserData } from 'controllers/UserController';
 import { Block, registerComponent } from 'core';
 import router from 'router';
 import chatService from 'services/chatService';
@@ -8,7 +8,7 @@ import './styles.scss';
 
 registerComponent(ChatMenuItem);
 
-type TMenuItem = {
+type MenuItem = {
     title: string;
     onClick: () => void;
 };
@@ -16,7 +16,7 @@ type TMenuItem = {
 type Props = {};
 
 type ComponentProps = Props & {
-    menuItems: TMenuItem[];
+    menuItems: MenuItem[];
     showMenu: boolean;
 };
 
@@ -26,7 +26,7 @@ export default class ChatMenu extends Block<ComponentProps> {
     constructor() {
         super();
 
-        const menuItems: TMenuItem[] = [
+        const menuItems: MenuItem[] = [
             {
                 title: 'Добавить участника',
                 onClick: this.onAddClickHandler.bind(this),
@@ -72,7 +72,7 @@ export default class ChatMenu extends Block<ComponentProps> {
         });
     }
 
-    onAddUsersSubmit(values: TSearchUserData) {
+    onAddUsersSubmit(values: SearchUserData) {
         const { searchAndAddUsers } = chatService();
 
         const { id } = router.getParams();

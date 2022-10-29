@@ -1,16 +1,16 @@
 import { Block, registerComponent } from 'core';
-import { TMessage, Message as MessageEntity } from 'entities/message';
+import { MessageType, Message as MessageEntity } from 'entities/message';
 import { MessageItem } from './components';
 import { Props as PropsMessage } from './components/Message';
 
 registerComponent(MessageItem);
 
 type Props = {
-    messages: TMessage[];
+    messages: MessageType[];
     validMessages?: PropsMessage[];
 };
 
-const generateValidMessages = (message: TMessage): PropsMessage => {
+const generateValidMessages = (message: MessageType): PropsMessage => {
     const messageEntity = new MessageEntity(message);
     return {
         author: messageEntity.isMe ? 'me' : 'opponent',

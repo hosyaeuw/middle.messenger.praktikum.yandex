@@ -2,12 +2,12 @@ import api from 'httpClient/api';
 import store from 'store';
 import httpClient from '../httpClient';
 
-export type TLoginData = {
+export type LoginData = {
     login: 'string';
     password: 'string';
 };
 
-export type TRegData = {
+export type RegData = {
     first_name: 'string';
     second_name: 'string';
     login: 'string';
@@ -17,13 +17,13 @@ export type TRegData = {
 };
 
 class AuthController {
-    public async signIn(data: TLoginData) {
+    public async signIn(data: LoginData) {
         return httpClient.post(`${api.auth.domain}${api.auth.auth}`, {
             data,
         });
     }
 
-    public async signUp(data: TRegData) {
+    public async signUp(data: RegData) {
         return httpClient.post(`${api.auth.domain}${api.auth.reg}`, {
             data,
         });

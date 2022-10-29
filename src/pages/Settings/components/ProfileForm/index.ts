@@ -15,7 +15,7 @@ import {
     nameValidators,
     phoneValidators,
 } from 'utils/validators/validators';
-import { TChangeProfileData } from 'controllers/UserController';
+import { ChangeProfileData } from 'controllers/UserController';
 import store from 'store';
 import convertingDataToSend from 'utils/convertingDataToSend';
 
@@ -122,7 +122,7 @@ export default class ProfileForm extends Block<ComponentProps> {
 
         const { changeProfile } = userService();
 
-        changeProfile(convertingDataToSend(formValues) as TChangeProfileData).then(() => {
+        changeProfile(convertingDataToSend(formValues) as ChangeProfileData).then(() => {
             this.onDisabledButton(true);
         });
     }

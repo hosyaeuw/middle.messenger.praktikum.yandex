@@ -5,17 +5,17 @@ import URLHelper from 'utils/URLHelper';
 
 const ABNORMAL_CLOSURE = 1006;
 
-type TWSOptions = {
+type WSOptions = {
     userId: number;
     chatId: number;
     token: string;
 };
 
-type TGetMessagesOptions = {
+type GetMessagesOptions = {
     offset: number;
 };
 
-export type TMessageData = {
+export type MessageData = {
     message?: string;
 };
 
@@ -103,7 +103,7 @@ class MessageController {
         }
     }
 
-    public connect(options: TWSOptions) {
+    public connect(options: WSOptions) {
         this._userId = options.userId;
         this._chatId = options.chatId;
         this._token = options.token;
@@ -120,7 +120,7 @@ class MessageController {
         this._addEvents();
     }
 
-    public getMessages(options: TGetMessagesOptions) {
+    public getMessages(options: GetMessagesOptions) {
         if (this._ws) {
             this._ws.send(
                 JSON.stringify({
@@ -139,7 +139,7 @@ class MessageController {
         }
     }
 
-    public sendMessage(data: TMessageData) {
+    public sendMessage(data: MessageData) {
         if (this._ws && data.message) {
             this._ws.send(
                 JSON.stringify({

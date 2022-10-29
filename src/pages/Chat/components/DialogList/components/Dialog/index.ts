@@ -2,7 +2,7 @@ import { Block } from 'core';
 
 import './styles.scss';
 
-export type TDialogProps = {
+export type DialogTypeProps = {
     unreadCount: number;
     name: string;
     time: string;
@@ -12,7 +12,7 @@ export type TDialogProps = {
     onClick?: () => void;
 };
 
-type Props = TDialogProps & {
+type Props = DialogTypeProps & {
     events?: {
         click?: () => void;
     };

@@ -1,8 +1,8 @@
 import router, { Path } from 'router';
 import { Block, registerComponent } from 'core';
-import { TDialog, Dialog as DialogEntity } from 'entities/dialog';
+import { DialogType, Dialog as DialogEntity } from 'entities/dialog';
 import { Dialog, DialogListEmpty } from './components';
-import { TDialogProps } from './components/Dialog';
+import { DialogTypeProps } from './components/Dialog';
 
 import './styles.scss';
 
@@ -11,12 +11,12 @@ registerComponent(Dialog);
 registerComponent(DialogListEmpty);
 
 type Props = {
-    dialogs: TDialog[];
-    validDialogs?: TDialogProps[];
-    onClick?: (dialog: TDialog) => void;
+    dialogs: DialogType[];
+    validDialogs?: DialogTypeProps[];
+    onClick?: (dialog: DialogType) => void;
 };
 
-const isOpenChat = (dialog: TDialog) => {
+const isOpenChat = (dialog: DialogType) => {
     const id = router.getParams().id;
     if (id) {
         return new DialogEntity(dialog).id === +id;
@@ -44,7 +44,7 @@ export default class DialogList extends Block<Props> {
         });
     }
 
-    generateValidDialog(dialog: TDialog): TDialogProps {
+    generateValidDialog(dialog: DialogType): DialogTypeProps {
         const dialogEntity = new DialogEntity(dialog);
 
         return {
