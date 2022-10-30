@@ -43,6 +43,10 @@ export default class DeleteUserItem extends Block<ComponentProps> {
         }
     }
 
+    componentDidUpdate() {
+        return true;
+    }
+
     render() {
         return `
             <li class="delete-user-item">

@@ -33,7 +33,6 @@ export default class NewChatButton extends Block<ComponentProps> {
     }
 
     onShowNewChatModal() {
-        console.log('zdec 2');
         this.setProps({
             showNewChatModal: true,
         });
