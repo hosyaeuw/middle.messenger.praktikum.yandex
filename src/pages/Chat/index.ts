@@ -1,12 +1,9 @@
 import { store } from 'store';
-import { router } from 'router';
 import { Block, registerComponent } from 'core';
 import { chatService } from 'services/chatService';
-import { OpenChatStore } from 'store/chatStore';
-import { Opponent } from 'entities/user';
-import { MessageType } from 'entities/message';
-import { DialogType } from 'entities/dialog';
+import { Dialog, DialogType } from 'entities/dialog';
 import { DialogList, MessageList, NewMessageForm, NewChatButton, ChatMenu } from './components';
+import { router } from 'router';
 
 import './styles.scss';
 
@@ -21,27 +18,11 @@ type Props = {};
 type OpenChat = {
     srcAvatar: string;
     opponentFullName: string;
-    messages: MessageType[];
 };
 
 type ComponentProps = Props & {
     title: string;
-    dialogs: DialogType[];
     openChat: OpenChat | null;
-};
-
-const generateOpenChat = (openChat: OpenChatStore): OpenChat | null => {
-    if (openChat) {
-        const opponent = new Opponent(openChat.opponent[0]);
-
-        return {
-            opponentFullName: opponent.fullName,
-            messages: openChat.messages,
-            srcAvatar: opponent.avatar,
-        };
-    }
-
-    return null;
 };
 
 const requestChat = (chatId: string | null) => {
@@ -58,45 +39,66 @@ const requestChat = (chatId: string | null) => {
     });
 };
 
+const generateOpenChat = (openDialog?: DialogType): OpenChat | null => {
+    if (openDialog) {
+        const dialogEntity = new Dialog(openDialog);
+        return {
+            opponentFullName: dialogEntity.title,
+            srcAvatar: dialogEntity.avatar,
+        };
+    }
+
+    return null;
+};
+
 export default class Chat extends Block<ComponentProps> {
     static componentName = 'Chat';
 
-    constructor() {
-        super();
-        const { id } = router.getParams();
-
-        const { dialogs, openChat } = chatService();
+    constructor(props = {}) {
+        const defaultProps = {
+            openChat: null,
+            title: 'Chats',
+            messages: [],
+        };
+        super(Object.assign(props, defaultProps));
 
         this.setProps({
-            title: 'Chats',
-            dialogs,
-            openChat: generateOpenChat(openChat),
             onSubmitHandler: this.onSubmitHandler,
         });
-
-        requestChat(id);
     }
 
     componentDidMount() {
+        const { id } = router.getParams();
+
+        requestChat(id);
+
         store.subscribe(state => {
-            this.setProps({
-                dialogs: state.dialogs,
-            });
-        }, 'Chat');
+            if (id) {
+                this.setProps({
+                    openChat: generateOpenChat(
+                        state.dialogs.find((dialog: DialogType) => dialog.id === +id),
+                    ),
+                });
+            }
+        }, 'OpenChat');
 
         store.subscribe(state => {
             this.setProps({
-                openChat: generateOpenChat(state.openChat),
+                messages: state.messages,
             });
         }, 'Messages');
-
-        const { fetchDialogs } = chatService();
-        fetchDialogs();
     }
 
     onSubmitHandler(values: any) {
-        const { sendMessage } = chatService();
+        const { sendMessage, fetchDialogs } = chatService();
         sendMessage(values);
+        fetchDialogs();
+    }
+
+    componentDestroy() {
+        const { clearMessages } = chatService();
+
+        clearMessages();
     }
 
     render() {
@@ -115,7 +117,7 @@ export default class Chat extends Block<ComponentProps> {
                                 {{{InputField name='search' placeholder='Search'}}}
                             </div>
                         </div>
-                        {{{DialogList dialogs=dialogs}}}
+                        {{{DialogList}}}
                     </div>
                     {{#if openChat}}
                         <div class='chat-dialog'>
@@ -131,7 +133,7 @@ export default class Chat extends Block<ComponentProps> {
                                 </div>
                             </div>
                             <div class='messages-block'>
-                                {{{MessageList messages=openChat.messages}}}
+                                {{{MessageList messages=messages}}}
                                 {{{NewMessageForm onSubmit=onSubmitHandler}}}
                             </div>
                         </div>                        

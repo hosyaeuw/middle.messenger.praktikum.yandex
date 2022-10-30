@@ -73,12 +73,10 @@ class MessageController {
         }
         if (Array.isArray(data)) {
             store.setState({
-                openChat: {
-                    messages: data,
-                },
+                messages: data,
             });
         } else if (typeof data === 'object' && data.type === 'message') {
-            const messages = [...store.getState().messages, data];
+            const messages = [data, ...store.getState().messages];
             store.setState({ messages });
         }
     }

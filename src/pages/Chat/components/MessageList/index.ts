@@ -7,11 +7,15 @@ registerComponent(MessageItem);
 
 type Props = {
     messages: MessageType[];
-    validMessages?: PropsMessage[];
+};
+
+type ComponentProps = Props & {
+    validMessages: PropsMessage[];
 };
 
 const generateValidMessages = (message: MessageType): PropsMessage => {
     const messageEntity = new MessageEntity(message);
+
     return {
         author: messageEntity.isMe ? 'me' : 'opponent',
         text: messageEntity.text,
@@ -20,17 +24,12 @@ const generateValidMessages = (message: MessageType): PropsMessage => {
         isMe: messageEntity.isMe,
     };
 };
-
-export default class MessageList extends Block<Props> {
+export default class MessageList extends Block<ComponentProps> {
     static componentName = 'MessageList';
 
-    constructor(props: Props) {
-        const defaultProps: Props = {
-            messages: [],
-        };
-        props.validMessages = (props.messages || []).map(generateValidMessages);
-
-        super(Object.assign(defaultProps, props));
+    constructor(props: ComponentProps) {
+        props.validMessages = props.messages.map(message => generateValidMessages(message));
+        super(props);
     }
 
     render() {

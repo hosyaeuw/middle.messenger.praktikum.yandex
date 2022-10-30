@@ -30,11 +30,6 @@ export default class Message extends Block<Props> {
     render() {
         return `
             <div class='message-container'>
-                {{#unless isMe}}
-                    <div class='message-avatar'>
-                        {{{Avatar src=avatar}}}
-                    </div>
-                {{/unless}}
                 <div>
                     <div class='message message_{{author}}'>
                         <div class='message-text'>

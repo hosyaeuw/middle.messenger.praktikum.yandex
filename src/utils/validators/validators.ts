@@ -8,7 +8,7 @@ import { Require } from "./Require";
 
 export const messages = {
     email: 'Incorrect email',
-    login: 'Incorrect login',
+    login: 'login must start with a capital letter and have at least one number',
     name: 'Incorrect name',
     phone: 'Incorrect phone',
     range: 'Invalid number of characters',

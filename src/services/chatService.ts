@@ -76,6 +76,10 @@ export const chatService = () => {
         });
     };
 
+    const disconnectMessages = () => {
+        messageController.closeConnection();
+    };
+
     const sendMessage = (data: MessageData) => {
         messageController.sendMessage(data);
     };
@@ -83,6 +87,12 @@ export const chatService = () => {
     const fetchUsersFromChat = (chatId: string | number) => {
         return chatController.getChatUsers(chatId).then(response => {
             return response.response.map(user => new Profile(user));
+        });
+    };
+
+    const clearMessages = () => {
+        store.setState({
+            messages: [],
         });
     };
 
@@ -99,5 +109,7 @@ export const chatService = () => {
         addUsersToChat,
         deleteUsersFromChat,
         fetchUsersFromChat,
+        disconnectMessages,
+        clearMessages,
     };
 };

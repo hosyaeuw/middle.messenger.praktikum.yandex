@@ -70,7 +70,7 @@ export default class AddUsersToChatModal extends Block<ComponentProps> {
             <div class='modal-container'>
                 <div class='modal'>
                     <div class="modal-close-btn">
-                        {{{Button content="&times;" onClick=onClose}}}
+                        {{{Button color="ghost" content="&times;" onClick=onClose}}}
                     </div>
                     <div class='modal-content'>
                         <h3>Users</h3>

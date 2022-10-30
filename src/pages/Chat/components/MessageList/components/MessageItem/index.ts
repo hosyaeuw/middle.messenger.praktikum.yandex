@@ -16,7 +16,6 @@ export default class MessageItem extends Block<Props> {
 
     constructor(props: Props) {
         super(props);
-
         this.setProps({
             position: props.isMe ? 'end' : 'start',
         });

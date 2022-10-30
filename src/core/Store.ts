@@ -64,10 +64,8 @@ class Store {
     }
 
     public subscribe(subscriber: (state: State) => void, tag: string) {
-        if (!this._subscribers.has(tag)) {
-            this._subscribers.set(tag, subscriber);
-            subscriber(this._state);
-        }
+        this._subscribers.set(tag, subscriber);
+        subscriber(this._state);
     }
 
     public setState(newState: State) {
@@ -85,6 +83,7 @@ class Store {
 
     private _makeStateProxy(state: State) {
         const self = this;
+
         return new Proxy(state, {
             set: (target: State, item: string, value: unknown) => {
                 const t = target;

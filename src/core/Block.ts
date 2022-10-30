@@ -1,5 +1,7 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
+import { deepClone } from 'utils/deepClone';
+import { isEqualObj } from 'utils/isEqual';
 
 import EventBus, { IEventBus } from './EventBus';
 
@@ -65,8 +67,7 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
     }
 
     componentDidUpdate(oldProps: T, newProps: T): boolean {
-        return true;
-        return oldProps !== newProps;
+        return !isEqualObj(oldProps, newProps);
     }
 
     setProps = (nextProps: Partial<BlockProps>) => {
@@ -168,7 +169,7 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
                 return typeof value === 'function' ? value.bind(target) : value;
             },
             set: (target: Record<string, unknown>, prop: string, value) => {
-                const oldProps = { ...target };
+                const oldProps = deepClone(target);
                 if (typeof target === 'object') {
                     target[prop] = value;
                 }
@@ -188,8 +189,8 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
             if (force) {
                 el.classList.add('route-active');
             } else {
-                el.classList.remove('route-hidden')
-                el.classList.remove('route-active')
+                el.classList.remove('route-hidden');
+                el.classList.remove('route-active');
                 // el.style.display = 'block';
             }
         }
@@ -202,12 +203,12 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
         }
     }
 
-    onDestroy() {}
+    componentDestroy() {}
 
     public destroy() {
         if (this._element) {
             this._element.remove();
-            this.onDestroy();
+            this.componentDestroy();
         }
     }
 }

@@ -31,8 +31,16 @@ export class Dialog {
     }
 
     get avatar() {
+        if (this.dialog.avatar) {
+            return `${BASE_MEDIA_URL}${this.dialog.avatar}`;
+        }
+
+        return 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';
+    }
+
+    get lastMessageUserAvatar() {
         if (this.dialog.last_message?.user?.avatar) {
-            return `${BASE_MEDIA_URL}${this.dialog.last_message.user.avatar}` ;
+            return `${BASE_MEDIA_URL}${this.dialog.last_message.user.avatar}`;
         }
 
         return 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';

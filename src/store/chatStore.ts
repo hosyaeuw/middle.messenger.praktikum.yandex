@@ -15,10 +15,12 @@ type ChatStore = {
     dialogs: DialogType[];
     dialogsNetworkStatus: NetworkStatus;
     openChat: OpenChatStore | null;
+    messages: MessageType[];
 };
 
 export const chatInitialState: ChatStore = {
-    dialogs: chats.dialogs,
+    dialogs: [],
     dialogsNetworkStatus: NetworkStatus.pending,
     openChat: openChat,
+    messages: [],
 };
