@@ -5,7 +5,7 @@ type PatternValidatorInitValue = {
     msg: string;
 };
 
-class Pattern implements Validator {
+export class Pattern implements Validator {
     msg: string = '';
     pattern: RegExp = /\.{0,}/g;
     constructor({ pattern, msg }: PatternValidatorInitValue) {
@@ -21,5 +21,3 @@ class Pattern implements Validator {
         return undefined;
     }
 }
-
-export default Pattern;

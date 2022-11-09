@@ -1,4 +1,4 @@
-export default function mergeSort(items: number[] | string): (number | string)[] {
+export function mergeSort(items: number[] | string): (number | string)[] {
     let array: (number | string)[] = typeof items === 'string' ? [...items] : items;
 
     return divide(array);

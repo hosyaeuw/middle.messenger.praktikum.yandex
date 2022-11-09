@@ -48,6 +48,10 @@ h2 {
     @include variables.font-xl;
 }
 
+h3 {
+    @include variables.font-m;
+}
+
 a {
     color: variables.$blue;
 }

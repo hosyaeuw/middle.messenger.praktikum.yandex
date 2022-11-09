@@ -21,7 +21,7 @@ export default class ErrorPage extends Block<Props> {
                 <div class="error-page">
                     <span class="error-page-title">{{title}}</span>
                     <span class="error-page-description">{{description}}</span>
-                    <a href="${Path.chat}">back to chat</a>
+                    <a href="${Path.messenger}">back to chat</a>
                 </div>
             </div>
         `;

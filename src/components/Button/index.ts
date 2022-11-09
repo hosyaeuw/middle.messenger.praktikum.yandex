@@ -1,14 +1,14 @@
 import { Block } from 'core';
 import './styles.scss';
 
-type colors = 'blue' | 'ghost';
-type formats = 'rect' | 'circle' | 'line';
+type Colors = 'blue' | 'ghost';
+type Formats = 'rect' | 'circle' | 'link';
 
 type Props = {
     content?: string | Block;
     type?: string;
-    color?: colors;
-    format?: formats;
+    color?: Colors;
+    format?: Formats;
     disabled?: boolean;
     onClick?: () => void;
     events?: {

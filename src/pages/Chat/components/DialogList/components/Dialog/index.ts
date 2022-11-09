@@ -2,17 +2,20 @@ import { Block } from 'core';
 
 import './styles.scss';
 
-export type TDialogProps = {
+export type DialogTypeProps = {
     unreadCount: number;
     name: string;
     time: string;
     text: string;
     selected?: boolean;
     src: string;
+    onClick?: () => void;
 };
 
-type Props = TDialogProps & {
-    onClick?: () => void;
+type Props = DialogTypeProps & {
+    events?: {
+        click?: () => void;
+    };
 };
 
 export default class Dialog extends Block<Props> {
@@ -28,6 +31,12 @@ export default class Dialog extends Block<Props> {
             selected: false,
         };
 
+        if (props.onClick) {
+            if (!props.events) {
+                props.events = {};
+            }
+            props.events.click = props.onClick;
+        }
         super(Object.assign(defaultProps, props));
     }
 

@@ -1,0 +1,45 @@
+@use '../../../../globalStyles/variables';
+
+
+.modal {
+    position: relative;
+    @include variables.center-container;
+    flex-direction: column;
+    width: 510px;
+    min-height: 296px;
+    background: variables.$white;
+    padding: 45px;
+
+    &-close-btn {
+        top: 0;
+        left: calc(100% + 24px);
+        position: absolute;
+        border: none;
+        background: none;
+        color: variables.$white;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+    &-container {
+        background: rgba(black, 0.7);
+        @include variables.center-container;
+        position: fixed;
+        inset: 0;
+        z-index: variables.$index-modal;
+
+    }
+
+    &-content {
+        flex: 1;
+        width: 252px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.text_blue {
+    color: variables.$blue;
+}

@@ -5,7 +5,7 @@ type RangeValidatorInitValue = {
     msg: string;
 };
 
-class Range implements Validator {
+export class Range implements Validator {
     msg: string = '';
     min?: number;
     max?: number;
@@ -38,5 +38,3 @@ class Range implements Validator {
         return undefined;
     }
 }
-
-export default Range;

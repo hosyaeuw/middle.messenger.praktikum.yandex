@@ -1,9 +1,9 @@
-import { inputTypes } from 'components/Input';
+import { InputTypes } from 'components/Input';
 import { Block } from 'core';
 import './styles.scss';
 
 type Props = {
-    type?: inputTypes;
+    type?: InputTypes;
     label?: string;
     placeholder?: string;
     defaultValue?: string;
@@ -62,7 +62,8 @@ export default class InputField extends Block<Props> {
                     {{{Input 
                         placeholder=placeholder 
                         underline=underline 
-                        name=name type=type 
+                        name=name 
+                        type=type 
                         onBlur=onBlurHandler
                         defaultValue=defaultValue
                         onFocus=onFocusHandler

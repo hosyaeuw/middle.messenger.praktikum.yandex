@@ -54,12 +54,22 @@ $active-link-color: variables.$blue;
                     width: 80%;
                     height: 80%;
                     text-align: center;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    @include variables.center-container;
                     color: variables.$white;
                 }
             }
+        }
+
+        &__logout-btn {
+            display: flex;
+            align-items: center;
+            padding-left: $distance-icon-text;
+            height: $link-height;
+            cursor: pointer;
+            @include variables.font-m;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: variables.$grey;
         }
     }
 

@@ -4,7 +4,7 @@ type RequireValidatorInitValue = {
     msg: string;
 };
 
-class Require implements Validator {
+export class Require implements Validator {
     msg: string = '';
     constructor({ msg }: RequireValidatorInitValue) {
         this.msg = msg;
@@ -27,5 +27,3 @@ class Require implements Validator {
         return undefined;
     }
 }
-
-export default Require;

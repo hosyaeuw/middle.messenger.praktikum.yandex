@@ -1,16 +1,19 @@
 import { Block, registerComponent } from 'core';
-import { TMessage, Message as MessageEntity } from 'entities/message';
+import { MessageType, Message as MessageEntity } from 'entities/message';
 import { MessageItem } from './components';
 import { Props as PropsMessage } from './components/Message';
 
 registerComponent(MessageItem);
 
 type Props = {
-    messages: TMessage[];
-    validMessages?: PropsMessage[];
+    messages: MessageType[];
 };
 
-const generateValidMessages = (message: TMessage): PropsMessage => {
+type ComponentProps = Props & {
+    validMessages: PropsMessage[];
+};
+
+const generateValidMessages = (message: MessageType): PropsMessage => {
     const messageEntity = new MessageEntity(message);
 
     return {
@@ -21,17 +24,12 @@ const generateValidMessages = (message: TMessage): PropsMessage => {
         isMe: messageEntity.isMe,
     };
 };
-
-export default class MessageList extends Block<Props> {
+export default class MessageList extends Block<ComponentProps> {
     static componentName = 'MessageList';
 
-    constructor(props: Props) {
-        const defaultProps: Props = {
-            messages: [],
-        };
-
-        props.validMessages = (props.messages || []).map(generateValidMessages);
-        super(Object.assign(defaultProps, props));
+    constructor(props: ComponentProps) {
+        props.validMessages = props.messages.map(message => generateValidMessages(message));
+        super(props);
     }
 
     render() {

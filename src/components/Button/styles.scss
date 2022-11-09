@@ -6,9 +6,7 @@
     height: 50px;
     cursor: pointer;
     @include variables.font-xl;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include variables.center-container;
 
     &:disabled {
         opacity: 0.5;
@@ -37,15 +35,19 @@
 
     &_ghost {
         border: none;
+        color: unset;
+        width: unset;
+        height: unset;
         background: unset;
     }
 
-    &_line {
+    &_link {
         font-size: inherit;
         text-transform: inherit;
         font-weight: inherit;
         color: inherit;
         height: unset;
         width: unset;
+        background: unset;
     }
 }

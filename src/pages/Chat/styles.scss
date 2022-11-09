@@ -70,21 +70,37 @@ $message-max-width: 416px;
     flex-direction: column;
     margin-bottom: 40px;
 
-    .header {
+    &-header {
         background: variables.$almostwhite;
         border-radius: 6px 6px 0px 0px;
         height: 110px;
         display: flex;
         align-items: center;
-        gap: 20px;
+        justify-content: space-between;
         padding: 0 38px 0 60px;
 
-        .name {
-            text-transform: capitalize;
-            @include variables.font-l;
-            font-weight: bold;
+        &__info {
+            gap: 20px;
+            display: flex;
+            align-items: center;
+
+            .name {
+                @include variables.font-l;
+                font-weight: bold;
+                word-wrap: break-word;
+            }
+        }
+
+        &__button {
+            &-container {
+                $size: 50px;
+                width: $size;
+                height: $size;
+            }
         }
     }
+
+
 
     .messages {
         display: flex;

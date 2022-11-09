@@ -3,9 +3,7 @@
 .root-form-container {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include variables.center-container;
     flex-direction: column;
 }
 

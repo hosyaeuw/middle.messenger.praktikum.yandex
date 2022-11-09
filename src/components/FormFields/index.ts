@@ -1,4 +1,5 @@
 import { Block } from 'core';
+
 import './styles.scss';
 
 type Props = {};

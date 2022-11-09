@@ -3,14 +3,15 @@ import { IUser } from './user';
 
 import openChat from 'data/openChat';
 import profile from 'data/profile';
+import { store } from 'store';
 
-export type TLastMessage = {
-    user: IUser;
+export type LastMessage = {
+    user?: IUser;
     time: string;
     content: string;
 };
 
-export type TMessage = {
+export type MessageType = {
     content: string;
     time: string;
     id: number;
@@ -22,12 +23,12 @@ export type TMessage = {
 export class Message {
     message;
 
-    constructor(message: TMessage) {
+    constructor(message: MessageType) {
         this.message = message;
     }
 
     get avatar() {
-        return !this.isMe ? openChat.opponent.avatar : profile.avatar;
+        return !this.isMe ? openChat.opponent[0].avatar : profile.avatar;
     }
 
     get text() {
@@ -43,6 +44,6 @@ export class Message {
     }
 
     get isMe() {
-        return profile.id === this.message.user_id;
+        return store.getState().profile.id === this.message.user_id;
     }
 }

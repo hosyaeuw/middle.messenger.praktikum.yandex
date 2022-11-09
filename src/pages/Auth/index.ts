@@ -1,9 +1,12 @@
+import { LoginData } from 'controllers/AuthController';
 import { Block } from 'core';
 import { Path } from 'router';
-import FormHelper from 'utils/FormHelper';
+import userService from 'services/userService';
+import { convertingDataToSend } from 'utils/convertingDataToSend';
+import { FormHelper } from 'utils/FormHelper';
 import { getFormValues } from 'utils/getFormValues';
-import { Require } from 'utils/validators';
 import { checkValidators } from 'utils/validators/checkValidators';
+import { Require } from 'utils/validators/Require';
 import { loginValidators, messages, passwordValidators } from 'utils/validators/validators';
 
 type Props = {};
@@ -54,8 +57,9 @@ export default class Auth extends Block<ComponentProps> {
             }
         }
 
-        console.log(formValues);
-        window.location.replace(Path.chat);
+        const { login } = userService();
+
+        login(convertingDataToSend(formValues) as LoginData);
     }
 
     render() {
@@ -83,7 +87,7 @@ export default class Auth extends Block<ComponentProps> {
                 {{{Button type="submit" content="Sign in"}}}
                 <div>
                     <span>No account?</span>
-                    <a href='./reg'>Create one</a>
+                    <a href=${Path.registration}>Create one</a>
                 </div>
             {{/FormLayout}}
         `;

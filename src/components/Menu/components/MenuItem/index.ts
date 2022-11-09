@@ -1,4 +1,5 @@
 import { Block } from 'core';
+import { router } from 'router';
 
 export type Props = {
     link: string;
@@ -18,18 +19,26 @@ export default class MenuItem extends Block<Props> {
         };
 
         super(Object.assign(defaultProps, props));
+
+        this.setProps({
+            events: {
+                click: this.goTo.bind(this),
+            },
+        });
+    }
+
+    goTo() {
+        router.go(this.props.link)
     }
 
     render() {
         return `
-            <a href={{link}}>
-                <li class='links__item {{#if active}}active{{/if}}'>
-                    {{#if icon}}
-                        <img src={{icon}} alt='{{title}}-icon' />
-                    {{/if}}
-                    <span>{{title}}</span>
-                </li>
-            </a>
+            <li class='links__item {{#if active}}active{{/if}}'>
+                {{#if icon}}
+                    <img src={{icon}} alt='{{title}}-icon' />
+                {{/if}}
+                <span>{{title}}</span>
+            </li>
         `;
     }
 }

@@ -1,7 +1,9 @@
-import Handlebars from "handlebars";
-import { nanoid } from "nanoid";
+import Handlebars from 'handlebars';
+import { nanoid } from 'nanoid';
+import { deepClone } from 'utils/deepClone';
+import { isEqualObj } from 'utils/isEqual';
 
-import EventBus, { IEventBus } from "./EventBus";
+import EventBus, { IEventBus } from './EventBus';
 
 export type BlockEventHandler = (...args: any) => void;
 export type BlockEvents = Record<string, BlockEventHandler>;
@@ -12,10 +14,10 @@ export type BlockProps = {
 
 export default class Block<T extends BlockProps = Record<string, unknown>> {
     static EVENTS = {
-        INIT: "init",
-        FLOW_CDM: "flow:component-did-mount",
-        FLOW_CDU: "flow:component-did-update",
-        FLOW_RENDER: "flow:render",
+        INIT: 'init',
+        FLOW_CDM: 'flow:component-did-mount',
+        FLOW_CDU: 'flow:component-did-update',
+        FLOW_RENDER: 'flow:render',
     };
 
     protected _element: HTMLElement | null = null;
@@ -65,8 +67,7 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
     }
 
     componentDidUpdate(oldProps: T, newProps: T): boolean {
-        return true;
-        return oldProps !== newProps;
+        return !isEqualObj(oldProps, newProps);
     }
 
     setProps = (nextProps: Partial<BlockProps>) => {
@@ -98,7 +99,7 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
     }
 
     private _compile(): DocumentFragment {
-        const fragment = document.createElement("template");
+        const fragment = document.createElement('template');
 
         const template = Handlebars.compile(this.render());
         fragment.innerHTML = template({
@@ -150,14 +151,9 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
     }
 
     getContent(): HTMLElement {
-        if (
-            this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE
-        ) {
+        if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
             setTimeout(() => {
-                if (
-                    this.element?.parentNode?.nodeType !==
-                    Node.DOCUMENT_FRAGMENT_NODE
-                ) {
+                if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
                     this._eventBus.emit(Block.EVENTS.FLOW_CDM);
                 }
             }, 100);
@@ -170,11 +166,11 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
         return new Proxy<T>(props, {
             get: (target, prop: string) => {
                 const value = target[prop];
-                return typeof value === "function" ? value.bind(target) : value;
+                return typeof value === 'function' ? value.bind(target) : value;
             },
             set: (target: Record<string, unknown>, prop: string, value) => {
-                const oldProps = { ...target };
-                if (typeof target === "object") {
+                const oldProps = deepClone(target);
+                if (typeof target === 'object') {
                     target[prop] = value;
                 }
 
@@ -182,22 +178,37 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
                 return true;
             },
             deleteProperty: () => {
-                throw new Error("Permission denied");
+                throw new Error('Permission denied');
             },
         });
     }
 
-    show() {
+    show(force = false) {
         const el = this.getContent();
         if (el) {
-            el.style.display = "block";
+            if (force) {
+                el.classList.add('route-active');
+            } else {
+                el.classList.remove('route-hidden');
+                el.classList.remove('route-active');
+                // el.style.display = 'block';
+            }
         }
     }
 
     hide() {
         const el = this.getContent();
         if (el) {
-            el.style.display = "none";
+            el.style.display = 'none';
+        }
+    }
+
+    componentDestroy() {}
+
+    public destroy() {
+        if (this._element) {
+            this._element.remove();
+            this.componentDestroy();
         }
     }
 }

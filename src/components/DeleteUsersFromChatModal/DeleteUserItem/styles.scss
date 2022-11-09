@@ -1,0 +1,28 @@
+.delete-user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__btn {
+        $size: 24px;
+        width: $size;
+        height: $size;
+        border: 1px solid black;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

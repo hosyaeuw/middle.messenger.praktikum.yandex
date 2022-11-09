@@ -1,4 +1,4 @@
-type timeFields = 'day' | 'month' | 'year' | 'hour' | 'minute';
+type TimeFields = 'day' | 'month' | 'year' | 'hour' | 'minute';
 
 export class DateHelper {
     static defaultOptions = {
@@ -9,7 +9,7 @@ export class DateHelper {
         minute: '2-digit',
     };
 
-    static getMessageTime(date: Date, fields?: timeFields[]) {
+    static getMessageTime(date: Date, fields?: TimeFields[]) {
         const options = fields
             ? Object.fromEntries(fields.map(key => [key, DateHelper.defaultOptions[key]]))
             : DateHelper.defaultOptions;

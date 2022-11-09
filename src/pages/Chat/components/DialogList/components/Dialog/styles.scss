@@ -63,9 +63,7 @@
             width: $size;
             height: $size;
             @include variables.font-s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include variables.center-container;
             background: variables.$red;
             border-radius: 50%;
             color: variables.$white;
