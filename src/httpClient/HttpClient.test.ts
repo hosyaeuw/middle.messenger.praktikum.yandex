@@ -8,7 +8,7 @@ describe('HttpClient', () => {
     global.XMLHttpRequest = xhr;
     const client = new HTTP('/');
     const requests: SinonFakeXMLHttpRequest[] = [];
-    const url = '/some/article/comments.json';
+    const url = '/';
 
     beforeEach(() => {
         xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
