@@ -59,37 +59,34 @@ export class Opponent extends ABCUser {
 }
 
 export class Profile extends ABCUser {
+    // @ts-ignore
+    user: IProfile;
+
     constructor(user: IProfile) {
         super(user);
     }
 
     get id() {
-        // @ts-ignore
         return this.user.id;
     }
 
     get displayName() {
-        // @ts-ignore
         return this.user.display_name;
     }
 
     get login() {
-        // @ts-ignore
         return this.user.login;
     }
 
     get email() {
-        // @ts-ignore
         return this.user.email;
     }
 
     get phone() {
-        // @ts-ignore
         return this.user.phone;
     }
 
     get role() {
-        // @ts-ignore
         return this.user.role ?? 'regular';
     }
 }

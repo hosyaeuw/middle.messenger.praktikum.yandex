@@ -32,21 +32,16 @@ describe('ROUTER TESTING:', () => {
 
     let callbackCounter = 0;
 
-    const a = () => {
+    const inc = () => {
         callbackCounter += 1;
     };
 
     router
-        // @ts-ignore
-        .onRoute(a)
-        // @ts-ignore
-        .register('/', IndexPage)
-        // @ts-ignore
-        .register('/login', Login)
-        // @ts-ignore
-        .register('/messages/:id', Messages)
-        // @ts-ignore
-        .register('*', Error404)
+        .onRoute(inc)
+        .register('/', IndexPage as typeof Block)
+        .register('/login', Login as typeof Block)
+        .register('/messages/:id', Messages as typeof Block)
+        .register('*', Error404 as typeof Block)
         .compile();
 
     it('NAVIGATION', () => {

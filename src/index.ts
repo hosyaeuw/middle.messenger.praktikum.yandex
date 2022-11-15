@@ -13,7 +13,7 @@ import {
     DeleteUsersFromChatModal,
 } from 'components';
 import { MainLayout, FormLayout } from 'layouts';
-import { registerComponent } from 'core';
+import { Block, registerComponent } from 'core';
 import { router, Path } from 'router';
 import { authController } from 'controllers/AuthController';
 
@@ -38,20 +38,12 @@ router
     .setPublicRedirect(Path.messenger)
     .setProtectedRedirect(Path.login)
     .onRoute(authController.checkAuth)
-    // @ts-ignore
-    .register(Path.home, Auth)
-    // @ts-ignore
-    .register(Path.login, Auth)
-    // @ts-ignore
-    .register(Path.registration, Reg)
-    // @ts-ignore
-    .register(Path.messenger, Chat, TAccess.protected)
-    // @ts-ignore
-    .register(Path.message, Chat, TAccess.protected)
-    // @ts-ignore
-    .register(Path.settings, Settings, TAccess.protected)
-    // @ts-ignore
-    .register(Path.serverError, ServerErrorPage, TAccess.protected)
-    // @ts-ignore
-    .register(Path.another, Page404, TAccess.protected)
+    .register(Path.home, Auth as typeof Block)
+    .register(Path.login, Auth  as typeof Block)
+    .register(Path.registration, Reg  as typeof Block)
+    .register(Path.messenger, Chat  as typeof Block, TAccess.protected)
+    .register(Path.message, Chat  as typeof Block, TAccess.protected)
+    .register(Path.settings, Settings  as typeof Block, TAccess.protected)
+    .register(Path.serverError, ServerErrorPage  as typeof Block, TAccess.protected)
+    .register(Path.another, Page404  as typeof Block, TAccess.protected)
     .compile();

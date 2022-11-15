@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { Router } from './Router';
 import Block from '../core/Block';
+
 describe('ROUTER TESTING:', () => {
     const router = new Router('#root');
     class IndexPage extends Block {
@@ -13,17 +14,12 @@ describe('ROUTER TESTING:', () => {
     }
     let callbackCounter = 0;
     router
-        // @ts-ignore
         .onRoute(() => {
         callbackCounter += 1;
     })
-        // @ts-ignore
         .register('/', IndexPage)
-        // @ts-ignore
         .register('/login', Login)
-        // @ts-ignore
         .register('/messages/:id', Messages)
-        // @ts-ignore
         .register('*', Error404)
         .compile();
     it('NAVIGATION', () => {

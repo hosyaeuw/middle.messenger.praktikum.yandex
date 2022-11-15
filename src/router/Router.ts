@@ -96,7 +96,7 @@ export class Router {
         }
     }
 
-    public onRoute(callback: () => Promise<boolean>) {
+    public onRoute(callback: () => Promise<boolean> | void) {
         this.checkAuthCallback = callback;
         return this;
     }
