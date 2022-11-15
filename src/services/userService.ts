@@ -37,7 +37,14 @@ export const userService = () => {
     };
 
     const uploadAvatar = (data: FormData) => {
-        return userController.uploadAvatar(data);
+        return userController.uploadAvatar(data).then(() => {
+            userController.getProfile().then(response => {
+                const data = response.response;
+                store.setState({
+                    profile: data,
+                });
+            });
+        });
     };
 
     const changePassword = (data: ChangePasswordData) => {
