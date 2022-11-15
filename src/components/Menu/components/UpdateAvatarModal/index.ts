@@ -65,6 +65,10 @@ export default class UpdateAvatarModal extends Block<ComponentProps> {
         fileInput.click();
     }
 
+    componentDidUpdate() {
+        return true
+    }
+
     render() {
         return `
             <div class='modal-container'>
