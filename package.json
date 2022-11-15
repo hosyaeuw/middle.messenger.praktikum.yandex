@@ -6,7 +6,8 @@
         "dev": "cross-env NODE_ENV=dev webpack serve",
         "build": "npx webpack --env production",
         "start": "npm run build && node app.ts",
-        "test": "mocha --require ts-node/register src/**/*.test.ts"
+        "test": "mocha --require ts-node/register src/**/*.test.ts",
+        "prepare": "husky install"
     },
     "alias": {
         "core": "./src/core",
@@ -23,8 +24,10 @@
         "config": "./src/config",
         "httpClient": "./src/httpClient/"
     },
-    "hooks": {
-        "pre-commit": "npm run test"
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run test"
+        }
     },
     "keywords": [],
     "author": "",
