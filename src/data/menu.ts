@@ -12,15 +12,7 @@ const json = {
             title: 'Settings',
             link: Path.settings,
             icon: icons.menu.settingsIcon,
-        },
-        {
-            title: '404',
-            link: Path.another,
-        },
-        {
-            title: '500',
-            link: Path.serverError,
-        },
+        }
     ],
 };
 
