@@ -29,12 +29,12 @@ Project will be available at http://localhost:3000
 
 Release:
 -----
-heroku login
-heroku container:login
-heroku create chat-hosyaeuw
-heroku container:push web
-heroku container:release web
-heroku open
+    heroku login
+    heroku container:login
+    heroku create chat-hosyaeuw
+    heroku container:push web
+    heroku container:release web
+    heroku open
 
 Demo:
 -----
