@@ -2,7 +2,6 @@ import { DialogType } from 'entities/dialog';
 import { MessageType } from 'entities/message';
 import { IOpponent } from 'entities/user';
 
-import chats from 'data/chats';
 import openChat from 'data/openChat';
 import { NetworkStatus } from 'utils/enums/NetworkStatus';
 

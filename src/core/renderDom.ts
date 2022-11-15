@@ -1,4 +1,4 @@
-import Block from './Block';
+import Block from './Block/Block';
 
 export default function renderDOM(
     component: Block<Record<string, unknown>>,

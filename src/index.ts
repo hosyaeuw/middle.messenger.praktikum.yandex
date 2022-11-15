@@ -17,6 +17,9 @@ import { registerComponent } from 'core';
 import { router, Path } from 'router';
 import { authController } from 'controllers/AuthController';
 
+import './globalStyles/global.scss'
+import './globalStyles/normalize.scss'
+
 registerComponent(MainLayout);
 registerComponent(Button);
 registerComponent(Input);
@@ -35,12 +38,20 @@ router
     .setPublicRedirect(Path.messenger)
     .setProtectedRedirect(Path.login)
     .onRoute(authController.checkAuth)
+    // @ts-ignore
     .register(Path.home, Auth)
+    // @ts-ignore
     .register(Path.login, Auth)
+    // @ts-ignore
     .register(Path.registration, Reg)
+    // @ts-ignore
     .register(Path.messenger, Chat, TAccess.protected)
+    // @ts-ignore
     .register(Path.message, Chat, TAccess.protected)
+    // @ts-ignore
     .register(Path.settings, Settings, TAccess.protected)
+    // @ts-ignore
     .register(Path.serverError, ServerErrorPage, TAccess.protected)
+    // @ts-ignore
     .register(Path.another, Page404, TAccess.protected)
     .compile();

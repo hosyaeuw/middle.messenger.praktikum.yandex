@@ -1,6 +1,6 @@
 import Handlebars, { HelperOptions } from 'handlebars';
 
-import Block from './Block';
+import Block from './Block/Block';
 
 export interface ComponentConstructable<Props extends Record<string, unknown>> {
     new (props: Props): Block<Props>;

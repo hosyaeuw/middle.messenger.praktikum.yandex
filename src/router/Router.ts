@@ -20,7 +20,7 @@ export class Router {
     private _protectedPaths: string[] = [];
     private _publicRedirect: string = defaultRedirectPage;
     private _protectedRedirect: string = defaultRedirectPage;
-    private checkAuthCallback: () => any = () => {};
+    private checkAuthCallback: (() => Promise<boolean> | void) | undefined = undefined;
     static _instance: Router;
 
     constructor(rootHTMLElementId: string) {
@@ -78,18 +78,22 @@ export class Router {
             this._currentRoute = route;
             route.render(force);
         }
-
-        this.checkAuthCallback().then((result: boolean) => {
-            if (result) {
-                if (this._publicPaths.includes(pathTemplate)) {
-                    this.go(this._publicRedirect);
-                }
-            } else {
-                if (this._protectedPaths.includes(pathTemplate)) {
-                    this.go(this._protectedRedirect);
-                }
+        if (this.checkAuthCallback) {
+            const response = this.checkAuthCallback()
+            if (response instanceof Promise) {
+                response.then((result: boolean) => {
+                    if (result) {
+                        if (this._publicPaths.includes(pathTemplate)) {
+                            this.go(this._publicRedirect);
+                        }
+                    } else {
+                        if (this._protectedPaths.includes(pathTemplate)) {
+                            this.go(this._protectedRedirect);
+                        }
+                    }
+                });
             }
-        });
+        }
     }
 
     public onRoute(callback: () => Promise<boolean>) {

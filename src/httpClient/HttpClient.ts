@@ -82,7 +82,7 @@ export default class HTTP {
                 };
             }
             let xhrTimeout: NodeJS.Timeout | undefined;
-            const xhr = new XMLHttpRequest();
+            const xhr = new window.XMLHttpRequest();
             xhr.withCredentials = true;
 
             xhr.open(method, this.baseURL ? this.baseURL + url : url);

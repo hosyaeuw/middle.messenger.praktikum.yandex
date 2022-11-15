@@ -1,3 +1,4 @@
+import { icons } from 'assets';
 import { Path } from 'router';
 
 const json = {
@@ -5,12 +6,12 @@ const json = {
         {
             title: 'Chat',
             link: Path.messenger,
-            icon: 'assets/icons/menu/chat.png',
+            icon: icons.menu.chatIcon,
         },
         {
             title: 'Settings',
             link: Path.settings,
-            icon: 'assets/icons/menu/settings.png',
+            icon: icons.menu.settingsIcon,
         },
         {
             title: '404',

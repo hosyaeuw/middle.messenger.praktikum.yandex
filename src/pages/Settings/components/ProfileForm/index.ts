@@ -133,7 +133,7 @@ export default class ProfileForm extends Block<ComponentProps> {
         });
     }
 
-    onChangeHandler(e: DOMEvent<HTMLInputElement>) {
+    onChangeHandler() {
         const formValues = getFormValues(this.getForm());
 
         if (this.props.defaultValues) {

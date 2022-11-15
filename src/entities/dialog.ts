@@ -11,6 +11,8 @@ export type DialogType = {
     last_message: LastMessage;
 };
 
+const emptyAvatarSrc = 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';
+
 export class Dialog {
     dialog;
 
@@ -35,7 +37,7 @@ export class Dialog {
             return `${BASE_MEDIA_URL}${this.dialog.avatar}`;
         }
 
-        return 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';
+        return emptyAvatarSrc;
     }
 
     get lastMessageUserAvatar() {
@@ -43,7 +45,7 @@ export class Dialog {
             return `${BASE_MEDIA_URL}${this.dialog.last_message.user.avatar}`;
         }
 
-        return 'https://www.mzpo-s.ru/images/teachers/prepodavatel.png';
+        return emptyAvatarSrc;
     }
 
     get timeString() {

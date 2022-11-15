@@ -3,6 +3,7 @@ import { getFormValues } from 'utils/getFormValues';
 import { checkValidators } from 'utils/validators/checkValidators';
 import { FormHelper } from 'utils/FormHelper';
 import { messageValidators } from 'utils/validators/validators';
+import { icons } from 'assets';
 
 import './styles.scss';
 
@@ -74,13 +75,13 @@ export default class NewMessageForm extends Block<ComponentProps> {
                         {{{Button 
                             color='ghost' 
                             format='circle'
-                            content='<img src="./assets/icons/chat-form/smile.png"/>'
+                            content='<img src="${icons.chat.smileIcon}"/>'
                         }}}
                         <span class='new-message-form__button-container'>
                             {{{Button 
                                 format='circle' 
                                 type='submit' 
-                                content='<img src="./assets/icons/chat-form/cursor.png"/>'
+                                content='<img src="${icons.chat.cursorIcon}"/>'
                             }}}
                         </span>
                     </div>

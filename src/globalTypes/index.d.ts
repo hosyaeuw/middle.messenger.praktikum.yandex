@@ -7,7 +7,17 @@ declare global {
         readonly target: T;
     }
 
-    export type anyObj = Record<string, any>
+    export type anyObj = Record<string, any>;
+
+    declare module '*.jpg' {
+        const path: string;
+        export default path;
+    }
+
+    declare module '*.png' {
+        const path: string;
+        export default path;
+    }
 }
 
 export {};
