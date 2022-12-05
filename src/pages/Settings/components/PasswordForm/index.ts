@@ -51,7 +51,7 @@ export default class PasswordForm extends Block<ComponentProps> {
         return this._element!.getElementsByTagName('form')[0];
     }
 
-    onChangeHandler(e: DOMEvent<HTMLInputElement>) {
+    onChangeHandler() {
         const formValues = getFormValues(this.getForm());
         if (this.props.validators) {
             const errors = checkValidators(formValues, this.props.validators);

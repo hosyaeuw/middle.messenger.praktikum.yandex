@@ -6,6 +6,6 @@ type PasswordValidatorInitValue = {
 
 export class Login extends Pattern {
     constructor({ msg }: PasswordValidatorInitValue) {
-        super({ msg, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/ });
+        super({ msg, pattern: /^(?=.*?[a-z])[a-z\d-_]+$/i });
     }
 }

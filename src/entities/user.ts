@@ -59,6 +59,9 @@ export class Opponent extends ABCUser {
 }
 
 export class Profile extends ABCUser {
+    // @ts-ignore
+    user: IProfile;
+
     constructor(user: IProfile) {
         super(user);
     }

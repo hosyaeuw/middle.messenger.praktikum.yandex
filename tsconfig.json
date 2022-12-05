@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "paths": {
+            "utils": ["/utils"],
+        },
         "target": "es2017",
         "lib": [
             "dom",
@@ -16,7 +19,6 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": true,
         "rootDir": "./src",
         "baseUrl": "./src",
         "noImplicitAny": true,
@@ -25,8 +27,14 @@
         "sourceMap": true,
         "strictNullChecks": true
     },
-    "typeRoots": ["node_modules/@types", "typings/app.d.ts"],
+    "typeRoots": ["node_modules/@types", "src/globalTypes"],
     "include": [
-        "src"
-    ]
+        "src",
+    ],
+    "ts-node": {
+        "files": true
+    },
+    "files": [
+        "src/globalTypes/index.d.ts",
+    ],
 }

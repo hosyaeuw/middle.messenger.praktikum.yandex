@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
-import { deepClone } from 'utils/deepClone';
-import { isEqualObj } from 'utils/isEqual';
+import { deepClone } from '../../utils/deepClone';
+import { isEqualObj } from '../../utils/isEqual';
 
-import EventBus, { IEventBus } from './EventBus';
+import EventBus, { IEventBus } from '../EventBus';
 
 export type BlockEventHandler = (...args: any) => void;
 export type BlockEvents = Record<string, BlockEventHandler>;
@@ -191,7 +191,6 @@ export default class Block<T extends BlockProps = Record<string, unknown>> {
             } else {
                 el.classList.remove('route-hidden');
                 el.classList.remove('route-active');
-                // el.style.display = 'block';
             }
         }
     }
